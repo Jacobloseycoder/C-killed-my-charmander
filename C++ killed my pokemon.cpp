@@ -47,7 +47,7 @@ using namespace std;
 int main() {
 	// Initialize game
 	// Display welcome message and instructions
-	
+	cout << ""
 	// Step 1: Choose your starter Pokemon
 	// Display starter options and get user input
 	// Step 2: Battle against rival
