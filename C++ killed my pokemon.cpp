@@ -235,3 +235,4 @@ string pokemonlist[] = {
 //need to make a list of pokemon that evolve at what gym level
 
 class pokemon_generator {
+};
