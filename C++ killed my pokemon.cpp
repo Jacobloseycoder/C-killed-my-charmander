@@ -226,3 +226,12 @@ string pokemonlist[] = {
     "Mewtwo",
     "Mew"
 };
+
+//this will generate a random pokemon depending on gyms beaten
+//need a way to track gyms beaten and use that to determine which pokemon can be generated
+//need to make sure not to generate evoved forms of pokemon
+//need a list of pokemon that can be generated at each gym level
+//need to make a list of pokemon that evolve from what pokemon
+//need to make a list of pokemon that evolve at what gym level
+
+class pokemon_generator {
