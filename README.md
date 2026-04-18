@@ -47,7 +47,8 @@ Team Members: Luke "deez nuts" Bishop, Jacob "carry the team" Losey, Max "makima
 | ------------------ | ------------- | ------------ |
 | `argument:type`    | IDK what to put for this  |              |
 ***
-flowchart TD
+###  flowchart
+```mermaid
 A[Start Game] --> B[Step 1: Choose Starter Pokemon]
  B --> C[Step 2: Battle Rival]
  C --> D[Step 3: Receive Random Second Pokemon]
