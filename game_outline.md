@@ -1,3 +1,4 @@
+
 # C-killed-my-charmander
 
 Team Members: Luke "deez nuts" Bishop, Jacob "carry the team" Losey, Max "makima is my queen" Barlow
@@ -46,3 +47,4 @@ Team Members: Luke "deez nuts" Bishop, Jacob "carry the team" Losey, Max "makima
 | ------------------ | ------------- | ------------ |
 | `argument:type`    | IDK what to put for this  |              |
 ***
+https://www.dexerto.com/pokemon/pokemon-sword-shield-type-effectiveness-chart-1288170/
