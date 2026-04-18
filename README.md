@@ -49,30 +49,30 @@ Team Members: Luke "deez nuts" Bishop, Jacob "carry the team" Losey, Max "makima
 ***
 ###  flowchart
 ```mermaid
-A[Start Game] --> B[Step 1: Choose Starter Pokemon]
- B --> C[Step 2: Battle Rival]
- C --> D[Step 3: Receive Random Second Pokemon]
-
-D --> E4[Step 4: Gym1 / Encounter]
-E4 --> E5[Step 5: Gym2 / Encounter]
-E5 --> E6[Step 6: Gym3 / Encounter]
-E6 --> E7[Step 7: Gym4 / Encounter]
-E7 --> E8[Step 8: Gym5 / Encounter]
-E8 --> E9[Step 9: Gym6 / Encounter]
-E9 --> E10[Step 10: Gym7 / Encounter]
-E10 --> E11[Step 11: Gym8 / Encounter]
-
-E10 --> F[Step 12: Elite Four Gauntlet]
-F --> G[Step 13: Rival Championship Battle]
-
-G --> H{Win?}
-H -- Yes --> I[Become Champion]
-H -- No --> J[Retry / Game Over]
-
-I --> K[Step 23: End Game or Post-Game Content]
-J --> K
-
-K --> L[Finish]
+start_game --> choose_starter
+choose_starter --> battle_rivale1
+battle_rivale1 --> new_pokemon1
+new_pokemon1 --> gym1(brock)
+gym1(brock) --> new_pokemon2
+new_pokemon2 --> Gym2(missty)
+Gym2(missty) --> new_pokemon3
+new_pokemon3 --> battle_rivale2
+battle_rivale2 --> Gym3(Lt surge)
+Gym3(Lt surge) --> new_pokemon4
+new_pokemon4 --> gym4(erika)
+gym4(erika) --> new_pokemon5
+new_pokemon4 --> gym5(koga)
+gym5(koga) --> battle_rivale3
+battle_rivale3 --> gym6(Sabrina)
+gym6(Sabrina) --> new_pokemon6
+new_pokemon6 --> gym7(blaine)
+gym7(blaine) --> new_pokemon7
+new_pokemon7 --> gym8(Giovanni)
+gym8(Giovanni) --> new_pokemon8
+new_pokemon8 --> battle_rivale3
+battle_rivale3 --> elite_four_gauntlet
+elite_four_gauntlet --> champion
+```
 <img width="728" height="462" alt="image" src="https://github.com/user-attachments/assets/0205faa0-8c33-4cef-b4fd-6e3a7afc4f26" />
 
 https://esp.mit.edu/download/1edacb14c3ec4b8bf875b3496b00cfb6/X5002_pokemon-notes.pdf
