@@ -6,27 +6,37 @@ Team Members: Luke "deez nuts" Bishop, Jacob "carry the team" Losey, Max "makima
 ###  flowchart
 ```mermaid
 start_game --> choose_starter
-choose_starter --> battle_rivale1
-battle_rivale1 --> new_pokemon1
-new_pokemon1 --> gym1(brock)
-gym1(brock) --> new_pokemon2
-new_pokemon2 --> Gym2(missty)
-Gym2(missty) --> new_pokemon3
-new_pokemon3 --> battle_rivale2
-battle_rivale2 --> Gym3(Lt surge)
-Gym3(Lt surge) --> new_pokemon4
-new_pokemon4 --> gym4(erika)
-gym4(erika) --> new_pokemon5
-new_pokemon4 --> gym5(koga)
-gym5(koga) --> battle_rivale3
-battle_rivale3 --> gym6(Sabrina)
-gym6(Sabrina) --> new_pokemon6
-new_pokemon6 --> gym7(blaine)
-gym7(blaine) --> new_pokemon7
-new_pokemon7 --> gym8(Giovanni)
-gym8(Giovanni) --> new_pokemon8
-new_pokemon8 --> battle_rivale3
-battle_rivale3 --> elite_four_gauntlet
+choose_starter --> battle_rival1
+battle_rival1 --> new_pokemon1
+
+new_pokemon1 --> gym1["Gym 1: Brock"]
+gym1 --> new_pokemon2
+
+new_pokemon2 --> gym2["Gym 2: Misty"]
+gym2 --> new_pokemon3
+
+new_pokemon3 --> battle_rival2
+battle_rival2 --> gym3["Gym 3: Lt. Surge"]
+
+gym3 --> new_pokemon4
+new_pokemon4 --> gym4["Gym 4: Erika"]
+
+gym4 --> new_pokemon5
+new_pokemon5 --> gym5["Gym 5: Koga"]
+
+gym5 --> battle_rival3
+battle_rival3 --> gym6["Gym 6: Sabrina"]
+
+gym6 --> new_pokemon6
+new_pokemon6 --> gym7["Gym 7: Blaine"]
+
+gym7 --> new_pokemon7
+new_pokemon7 --> gym8["Gym 8: Giovanni"]
+
+gym8 --> new_pokemon8
+new_pokemon8 --> battle_rival4
+
+battle_rival4 --> elite_four_gauntlet
 elite_four_gauntlet --> champion
 ```
 
