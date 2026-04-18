@@ -5,7 +5,7 @@ Team Members: Luke "deez nuts" Bishop, Jacob "carry the team" Losey, Max "makima
 
 | `Pokemon`    |               |    Luke   |
 | ------------------ | ------------- | ------------ |
-| `argument:type`    | records the stats and names of pokemon used in both enemys and players team  |              |
+| `argument:type`    | records the stats, names, type of pokemon used in both enemys and players team  |              |
 ***
 | `Battle`    |               |   Luke    |
 | ------------------ | ------------- | ------------ |
@@ -17,7 +17,7 @@ Team Members: Luke "deez nuts" Bishop, Jacob "carry the team" Losey, Max "makima
 ***
 | `Player`    |               |   Max    |
 | ------------------ | ------------- | ------------ |
-| `argument:type`    | takes input from the user for ____  |              |
+| `argument:type`    | probably just inventory and player pokemon if made its own thing  |              |
 ***
 | `Enemy`    |               |   Max    |
 | ------------------ | ------------- | ------------ |
