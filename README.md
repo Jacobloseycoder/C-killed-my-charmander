@@ -5,7 +5,7 @@ Team Members: Luke "deez nuts" Bishop, Jacob "carry the team" Losey, Max "makima
 
 ###  flowchart
 ```mermaid
-graph LR
+graph TD
 start_game --> choose_starter
 choose_starter --> battle_rival1
 battle_rival1 --> new_pokemon1
