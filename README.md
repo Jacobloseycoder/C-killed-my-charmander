@@ -49,3 +49,4 @@ Team Members: Luke "deez nuts" Bishop, Jacob "carry the team" Losey, Max "makima
 ***
 [https://www.dexerto.com/pokemon/pokemon-sword-shield-type-effectiveness-chart-1288170/
 ](https://www.dexerto.com/cdn-image/wp-content/uploads/2019/11/Type-Effectiveness-Chart.jpg?width=768&quality=75&format=auto)
+https://esp.mit.edu/download/1edacb14c3ec4b8bf875b3496b00cfb6/X5002_pokemon-notes.pdf
