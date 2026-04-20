@@ -16,14 +16,18 @@ int main()
 	{
 		int hp, attack, level;
 		string name;
-		while (inFile >> name >> hp >> attack >> level)
+		int count = 0;
+		while (count < 152)
 		{
+			getline(inFile, name);
+			inFile >> hp >> attack >> level;
 			Pokemon pokemon(name, hp, attack, level);
 			cout << "Name: " << pokemon.getName() << endl;
 			cout << "HP: " << pokemon.getHp() << endl;
 			cout << "Attack: " << pokemon.getAttack() << endl;
 			cout << "Level: " << pokemon.getLevel() << endl;
 			cout << endl;
+			count++;
 		}
 
 	}
