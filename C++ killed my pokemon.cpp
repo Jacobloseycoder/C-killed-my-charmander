@@ -236,3 +236,142 @@ string pokemonlist[] = {
 
 class pokemon_generator {
 };
+
+void riddle1() {
+	//first gym leader riddle
+	//mulitple choice question with 4 options
+    //if wrong they get a second chance
+	//if wrong agion they get a punishment
+	cout << "how many pokemon are there?" << endl;
+	cout << "a. 151" << endl;
+	cout << "b. like 5" << endl;
+	cout << "c. 1 billion lions" << endl;
+	cout << "d. 1025" << endl;
+	if (cin.get() == 'a') {
+        cout << "correct!" << endl;
+    }
+    else {
+        cout << "wrong! try again!" << endl;
+        if (cin.get() == 'a') {
+            cout << "correct!" << endl;
+        }
+        else {
+            cout << "wrong again! you get a punishment!" << endl;
+            //punishment
+        }
+
+};
+
+void riddle2() {
+    //this is the riddle for the second gym leader
+    //mulitple choice question with 4 options
+    //if wrong they get a second chance
+    //if wrong agion they get a punishment
+	cout << "what is the 37th pokemon?" << endl;
+	cout << "a. Jigglypuff" << endl;
+	cout << "b. Ninetales" << endl;
+	cout << "c. Vulpix" << endl;
+	cout << "d. Wigglytuff" << endl;
+    if (cin.get() == 'c') {
+        cout << "correct!" << endl;
+    }
+    else {
+        cout << "wrong! try again!" << endl;
+        if (cin.get() == 'c') {
+            cout << "correct!" << endl;
+        }
+        else {
+            cout << "wrong again! you get a punishment!" << endl;
+            //punishment
+		}
+};
+
+void riddle3() {
+    //this is the riddle for the third gym leader
+    //mulitple choice question with 4 options
+    //if wrong they get a second chance
+    //if wrong agion they get a punishment
+	cout << "how do you evolve eevee into flareon?" << endl;
+	cout << "a. use a water stone" << endl;
+	cout << "b. level up with high friendship during the day" << endl;
+	cout << "c. level up with high friendship during the night" << endl;
+    cout << "d. use a fire stone " << endl;
+    if (cin.get() == 'd') {
+        cout << "correct!" << endl;
+    }
+    else {
+        cout << "wrong! try again!" << endl;
+        if (cin.get() == 'd') {
+            cout << "correct!" << endl;
+        }
+        else {
+            cout << "wrong again! you get a punishment!" << endl;
+            //punishment
+		}
+};
+
+void riddle4() {
+    //this is the riddle for the fourth gym leader
+    //mulitple choice question with 4 options
+    //if wrong they get a second chance
+    //if wrong agion they get a punishment
+	cout << "how many dragonites does lance have?" << endl;
+	cout << "a. 1" << endl;
+	cout << "b. 2" << endl;
+    cout << "c. 3" << endl;
+    cout << "d. 4" << endl;
+    if (cin.get() == 'c') {
+        cout << "correct!" << endl;
+    }
+    else {
+        cout << "wrong! try again!" << endl;
+        if (cin.get() == 'c') {
+            cout << "correct!" << endl;
+        }
+        else {
+            cout << "wrong again! you get a punishment!" << endl;
+            //punishment
+		}
+};
+
+void riddle5() {
+    //this is the riddle for the fifth gym leader
+    //mulitple choice question with 4 options
+    //if wrong they get a second chance
+    //if wrong agion they get a punishment
+	cout << "what is the best sorce of information about pokemon?" << endl;
+	cout << "a. the pokedex" << endl;
+	cout << "b. wikipedia" << endl;
+    cout << "c. the pokemon anime" << endl;
+    cout << "d. the internet" << endl;
+    if (cin.get() == 'b') {
+        cout << "correct!" << endl;
+    }
+    else {
+        cout << "wrong! try again!" << endl;
+        if (cin.get() == 'b') {
+            cout << "correct!" << endl;
+        }
+        else {
+            cout << "wrong again! you get a punishment!" << endl;
+            //punishment
+		}
+};
+
+void riddle6() {
+    //this is the riddle for the sixth gym leader
+    //need to make sure to give the player a hint if they get it wrong
+    //need to make sure to give the player a reward if they get it right
+};
+
+void riddle7() {
+    //this is the riddle for the seventh gym leader
+    //need to make sure to give the player a hint if they get it wrong
+    //need to make sure to give the player a reward if they get it right
+};
+
+void riddle8() {
+    //this is the riddle for the eighth gym leader
+    //need to make sure to give the player a hint if they get it wrong
+    //need to make sure to give the player a reward if they get it right
+};
