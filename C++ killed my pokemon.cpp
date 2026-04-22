@@ -242,27 +242,35 @@ void generatePokemon() {
     //need to make sure to only generate pokemon that can be found at the current gym level
     if (battle_level == 0) {
         //generate starter pokemon
+		//charmender, squirtle, or bulbasaur
     }
     else if (battle_level == 1) {
         //generate beginning pokemon
+		//pidgey, rattata, majikarp
     }
     else if (battle_level == 2) {
         //generate pokemon after brock
+        //weedle, caterpie, pichachu, nidoran, diglett
     }
     else if (battle_level == 3) {
         //generate pokemon after misty
+		//spearow, psyduck, slowpoke, goldeen, mankey, sandshrew, poliwag, jigglypuff, zubat, geodude, onix, paras
     }
     else if (battle_level == 4) {
 		//generate pokemon after rival battle 2
+        //all past options
     }
     else if (battle_level == 5) {
 		//generate pokemon after LT surge
+        //voltorb, magnemite, electobuzz, muc
 	}
     else if (battle_level == 6) {
         //generate pokemon after erika
+        //gastly, machop, cubone, hitmonlee, hitmonchan, oddish, bellsprout, krabby, horsea
     }
     else if (battle_level == 7) {
         //generate pokemon after koga
+        //
     }
     else if (battle_level == 8) {
         //generate pokemon after rival battle 3
