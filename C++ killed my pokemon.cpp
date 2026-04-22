@@ -1,4 +1,5 @@
 using namespace std;
+int gym_level = 0;
 //reqirements
 //At least 7 classes that represent different parts of the game(see suggestions below).
 //A main game loop that lets the player explore, make decisions, and progress.
@@ -234,7 +235,54 @@ string pokemonlist[] = {
 //need to make a list of pokemon that evolve from what pokemon
 //need to make a list of pokemon that evolve at what gym level
 
-class pokemon_generator {
+void generatePokemon() {
+    //generate a random pokemon based on gyms beaten
+    //use the pokemonlist array to randomly select a pokemon
+    //need to make sure not to generate evoved forms of pokemon
+    //need to make sure to only generate pokemon that can be found at the current gym level
+    if (battle_level == 0) {
+        //generate starter pokemon
+    }
+    else if (battle_level == 1) {
+        //generate beginning pokemon
+    }
+    else if (battle_level == 2) {
+        //generate pokemon after brock
+    }
+    else if (battle_level == 3) {
+        //generate pokemon after misty
+    }
+    else if (battle_level == 4) {
+		//generate pokemon after rival battle 2
+    }
+    else if (battle_level == 5) {
+		//generate pokemon after LT surge
+	}
+    else if (battle_level == 6) {
+        //generate pokemon after erika
+    }
+    else if (battle_level == 7) {
+        //generate pokemon after koga
+    }
+    else if (battle_level == 8) {
+        //generate pokemon after rival battle 3
+	}
+    else if (battle_level == 9) {
+        //generate pokemon after sabrina
+    }
+    else if (battle_level == 10) {
+        //generate pokemon after rival battle 4
+    }
+    else if (battle_level == 11) {
+        //generate pokemon after blaine
+    }
+    else if (battle_level == 12) {
+        //generate pokemon after rival battle 5
+    }
+    else if (battle_level == 13) {
+        //generate pokemon after giovanni
+	}
+    //add pokemon to player's inventory
 };
 
 void riddle1() {
@@ -339,7 +387,7 @@ void riddle5() {
     //mulitple choice question with 4 options
     //if wrong they get a second chance
     //if wrong agion they get a punishment
-	cout << "what is the best sorce of information about pokemon?" << endl;
+	cout << "what is the best sorce of information for pokemon?" << endl;
 	cout << "a. the pokedex" << endl;
 	cout << "b. wikipedia" << endl;
     cout << "c. the pokemon anime" << endl;
@@ -360,18 +408,74 @@ void riddle5() {
 
 void riddle6() {
     //this is the riddle for the sixth gym leader
-    //need to make sure to give the player a hint if they get it wrong
-    //need to make sure to give the player a reward if they get it right
+    //mulitple choice question with 4 options
+    //if wrong they get a second chance
+    //if wrong agion they get a punishment
+	cout << "what is the capital of the pokemon world?" << endl;
+	cout << "a. pallet town" << endl;
+    cout << "b. cerulean city" << endl;
+    cout << "c. indigo plateau" << endl;
+    cout << "d. lavender town" << endl;
+    if (cin.get() == 'c') {
+        cout << "correct!" << endl;
+    }
+    else {
+        cout << "wrong! try again!" << endl;
+        if (cin.get() == 'c') {
+            cout << "correct!" << endl;
+        }
+        else {
+            cout << "wrong again! you get a punishment!" << endl;
+            //punishment
+		}
 };
 
 void riddle7() {
     //this is the riddle for the seventh gym leader
-    //need to make sure to give the player a hint if they get it wrong
+    //mulitple choice question with 4 options
+    //if wrong they get a second chance
     //need to make sure to give the player a reward if they get it right
+	cout << "what is the name of the pokemon that can only be caught in the safari zone?" << endl;
+    cout << "a. scyther" << endl;
+    cout << "b. pinsir" << endl;
+    cout << "c. tauros" << endl;
+    cout << "d. magikarp" << endl;
+    if (cin.get() == 'c') {
+        cout << "correct!" << endl;
+        //reward
+    }
+    else {
+        cout << "wrong! try again!" << endl;
+        if (cin.get() == 'c') {
+            cout << "correct!" << endl;
+            //reward
+        }
+        else {
+            cout << "wrong again! you get a punishment!" << endl;
+            //punishment
+		}
 };
 
 void riddle8() {
     //this is the riddle for the eighth gym leader
-    //need to make sure to give the player a hint if they get it wrong
-    //need to make sure to give the player a reward if they get it right
+    //mulitple choice question with 4 options
+    //if wrong they get a second chance
+    //if wrong agion they get a punishment
+	cout << "how many pokemon are in the original 151?" << endl;
+    cout << "a. 150" << endl;
+    cout << "b. 151" << endl;
+    cout << "c. 152" << endl;
+    cout << "d. 153" << endl;
+    if (cin.get() == 'b') {
+        cout << "correct!" << endl;
+    }
+    else {
+        cout << "wrong! try again!" << endl;
+        if (cin.get() == 'b') {
+            cout << "correct!" << endl;
+        }
+        else {
+            cout << "wrong again! you get a punishment!" << endl;
+            //punishment
+		}
 };
