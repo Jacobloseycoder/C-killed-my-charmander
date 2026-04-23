@@ -11,13 +11,11 @@ int gym_level = 0;
 
 //
 
-//classes
-//pokemon class - holds the pokemons type, stats, and moves
-//player class - holds the inventory
-//battle class - handles the battle mechanics
-//enemy class - holds the enemy pokemons type, stats, and moves
-//riddle class - holds the riddle and answer for the gym leaders
-//pokemon generator class - generates random pokemon for the player to catch and battle
+//what i do 
+//main
+//riddles
+//pokemon generation
+//user input
 
 //enter game is just a pokemon battle sim 
 //game formst;
