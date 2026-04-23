@@ -2,33 +2,29 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 int main()
 {
-	fstream inFile("C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\Meowth\\Meowth\\Pokedex.txt");
+	ifstream inFile("C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\Meowth\\Meowth\\Pokedex.txt");
 	if (!inFile)
 	{
 		cout << "Error!!!! File not found." << endl;
 		return 0;
 	}
-	else
-	{
-		int hp, attack, level;
-		string name;
-		int count = 0;
-		while (count < 152)
-		{
-			getline(inFile, name);
-			inFile >> hp >> attack >> level;
-			Pokemon pokemon(name, hp, attack, level);
-			cout << "Name: " << pokemon.getName() << endl;
-			cout << "HP: " << pokemon.getHp() << endl;
-			cout << "Attack: " << pokemon.getAttack() << endl;
-			cout << "Level: " << pokemon.getLevel() << endl;
-			cout << endl;
-			count++;
-		}
 
-	}
+    string name;
+    int health, attack, level;
+
+    while (inFile >> name >> health >> attack >> level) {
+        cout << "Name: " << name << endl;
+        cout << "Health: " << health << endl;
+        cout << "Attack: " << attack << endl;
+        cout << "Level: " << level << endl;
+        cout << endl;
+    }
+
+    inFile.close();
+    return 0;
 }
