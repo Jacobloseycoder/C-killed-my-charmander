@@ -1,9 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\eoeoe\\",
+  "WorkspaceRootPath": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\eoeoe.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Brock.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|solutionrelative:eoeoe\\Brock.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\LtSurge.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|solutionrelative:eoeoe\\LtSurge.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Misty.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|solutionrelative:eoeoe\\Misty.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Brock.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|solutionrelative:eoeoe\\Brock.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Misty.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|solutionrelative:eoeoe\\Misty.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\eoeoe.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F4F8209D-CDF1-4E63-93E7-5A9B00CA0316}|eoeoe\\eoeoe.vcxproj|solutionrelative:eoeoe\\eoeoe.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -14,19 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LtSurge.h",
+              "DocumentMoniker": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\LtSurge.h",
+              "RelativeDocumentMoniker": "eoeoe\\LtSurge.h",
+              "ToolTip": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\LtSurge.h",
+              "RelativeToolTip": "eoeoe\\LtSurge.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-23T18:40:53.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Misty.h",
+              "DocumentMoniker": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Misty.h",
+              "RelativeDocumentMoniker": "eoeoe\\Misty.h",
+              "ToolTip": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Misty.h",
+              "RelativeToolTip": "eoeoe\\Misty.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-23T18:36:42.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Brock.h",
+              "DocumentMoniker": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Brock.h",
+              "RelativeDocumentMoniker": "eoeoe\\Brock.h",
+              "ToolTip": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Brock.h",
+              "RelativeToolTip": "eoeoe\\Brock.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-23T18:34:00.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "eoeoe.cpp",
-              "DocumentMoniker": "C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\eoeoe.cpp",
+              "DocumentMoniker": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\eoeoe.cpp",
               "RelativeDocumentMoniker": "eoeoe\\eoeoe.cpp",
-              "ToolTip": "C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\eoeoe.cpp",
+              "ToolTip": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\eoeoe.cpp",
               "RelativeToolTip": "eoeoe\\eoeoe.cpp",
-              "ViewState": "AgIAAHcCAAAAAAAAAAAewKoCAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAFQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-04-22T18:28:25.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Brock.cpp",
+              "DocumentMoniker": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Brock.cpp",
+              "RelativeDocumentMoniker": "eoeoe\\Brock.cpp",
+              "ToolTip": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Brock.cpp",
+              "RelativeToolTip": "eoeoe\\Brock.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-23T18:34:19.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Misty.cpp",
+              "DocumentMoniker": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Misty.cpp",
+              "RelativeDocumentMoniker": "eoeoe\\Misty.cpp",
+              "ToolTip": "C:\\Users\\2020920\\Desktop\\C-killed-my-charmander\\eoeoe\\eoeoe\\Misty.cpp",
+              "RelativeToolTip": "eoeoe\\Misty.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-23T18:36:52.803Z",
               "EditorCaption": ""
             }
           ]

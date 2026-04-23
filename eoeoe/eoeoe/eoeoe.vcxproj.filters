@@ -18,5 +18,25 @@
     <ClCompile Include="eoeoe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Brock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Misty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LtSurge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Brock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Misty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LtSurge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

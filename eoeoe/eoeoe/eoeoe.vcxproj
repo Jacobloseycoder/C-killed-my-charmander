@@ -123,7 +123,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Brock.cpp" />
     <ClCompile Include="eoeoe.cpp" />
+    <ClCompile Include="LtSurge.cpp" />
+    <ClCompile Include="Misty.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Brock.h" />
+    <ClInclude Include="LtSurge.h" />
+    <ClInclude Include="Misty.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
