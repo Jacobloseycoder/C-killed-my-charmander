@@ -1,7 +1,7 @@
 
 # C-killed-my-charmander
 
-Team Members: Luke "deez nuts" Bishop, Jacob "carry the team" Losey, Max "makima is my queen" Barlow
+Team Members: Luke "5$ suck suck" Bishop, Jacob "carry the team" Losey, Max "like it up the" Barlow
 
 ###  flowchart
 ```mermaid
