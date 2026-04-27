@@ -233,62 +233,60 @@ string pokemonlist[] = {
 //need to make a list of pokemon that evolve from what pokemon
 //need to make a list of pokemon that evolve at what gym level
 
+vector <string> pool;
+
 void generatePokemon() {
     //generate a random pokemon based on gyms beaten
     //use the pokemonlist array to randomly select a pokemon
     //need to make sure not to generate evoved forms of pokemon
     //need to make sure to only generate pokemon that can be found at the current gym level
-    if (battle_level == 0) {
-        //generate starter pokemon
-		//charmender, squirtle, or bulbasaur
+    switch (gym_level) {
+    case 0: // df=[0'
+        pool = { "Charmander", "Squirtle", "Bulbasaur" };
+        break;
+    case 1: // beginning wilds
+        pool = { "Pidgey", "Rattata", "Magikarp" };
+        break;
+    case 2: // after Brock
+        pool = { "Weedle", "Caterpie", "Pikachu", "Nidoran (F)", "Diglett" };
+        break;
+    case 3: // after Misty
+        pool = { "Spearow", "Psyduck", "Slowpoke", "Goldeen", "Mankey", "Sandshrew", "Poliwag", "Jigglypuff", "Zubat", "Geodude", "Onix", "Paras" };
+        break;
+    case 4: // after rival battle 2 (mix of earlier)
+        pool = { "Pidgey", "Rattata", "Weedle", "Caterpie", "Pikachu", "Diglett", "Spearow", "Psyduck", "Zubat", "Geodude" };
+        break;
+    case 5: // after Lt. Surge
+        pool = { "Voltorb", "Magnemite", "Electabuzz", "Muk" };
+        break;
+    case 6: // after Erika
+        pool = { "Gastly", "Machop", "Cubone", "Hitmonlee", "Hitmonchan", "Oddish", "Bellsprout", "Krabby", "Horsea" };
+        break;
+    case 7: // after Koga (poison-themed)
+        pool = { "Koffing", "Weezing", "Zubat", "Golbat", "Venonat", "Venomoth" };
+        break;
+    case 8: // after rival battle 3
+        pool = { "Growlithe", "Abra", "Machop", "Bellsprout", "Ponyta", "Oddish" };
+        break;
+    case 9: // after Sabrina
+        pool = { "Abra", "Drowzee", "Krabby", "Cubone", "Ponyta" };
+        break;
+    case 10: // after rival battle 4
+        pool = { "Geodude", "Graveler", "Onix", "Shellder", "Krabby" };
+        break;
+    case 11: // after Blaine
+        pool = { "Magmar", "Electabuzz", "Pinsir", "Tauros", "Scyther" };
+        break;
+    case 12: // after rival battle 5
+        pool = { "Omanyte", "Kabuto", "Aerodactyl", "Dratini", "Horsea" };
+        break;
+    case 13: // after Giovanni
+        pool = { "Rhydon", "Gyarados", "Lapras", "Snorlax", "Gengar" };
+        break;
+    default: // late game / fallback
+        pool = { "Rattata", "Pidgey", "Zubat" };
+        break;
     }
-    else if (battle_level == 1) {
-        //generate beginning pokemon
-		//pidgey, rattata, majikarp
-    }
-    else if (battle_level == 2) {
-        //generate pokemon after brock
-        //weedle, caterpie, pichachu, nidoran, diglett
-    }
-    else if (battle_level == 3) {
-        //generate pokemon after misty
-		//spearow, psyduck, slowpoke, goldeen, mankey, sandshrew, poliwag, jigglypuff, zubat, geodude, onix, paras
-    }
-    else if (battle_level == 4) {
-		//generate pokemon after rival battle 2
-        //all past options
-    }
-    else if (battle_level == 5) {
-		//generate pokemon after LT surge
-        //voltorb, magnemite, electobuzz, muc
-	}
-    else if (battle_level == 6) {
-        //generate pokemon after erika
-        //gastly, machop, cubone, hitmonlee, hitmonchan, oddish, bellsprout, krabby, horsea
-    }
-    else if (battle_level == 7) {
-        //generate pokemon after koga
-        //
-    }
-    else if (battle_level == 8) {
-        //generate pokemon after rival battle 3
-	}
-    else if (battle_level == 9) {
-        //generate pokemon after sabrina
-    }
-    else if (battle_level == 10) {
-        //generate pokemon after rival battle 4
-    }
-    else if (battle_level == 11) {
-        //generate pokemon after blaine
-    }
-    else if (battle_level == 12) {
-        //generate pokemon after rival battle 5
-    }
-    else if (battle_level == 13) {
-        //generate pokemon after giovanni
-	}
-    //add pokemon to player's inventory
 };
 
 void riddle1() {
