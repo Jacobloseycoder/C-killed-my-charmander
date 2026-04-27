@@ -1,4 +1,6 @@
 using namespace std;
+#include <string>
+#include <vector>
 int gym_level = 0;
 //reqirements
 //At least 7 classes that represent different parts of the game(see suggestions below).
