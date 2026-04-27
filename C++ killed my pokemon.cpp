@@ -241,7 +241,7 @@ void generatePokemon() {
     //need to make sure not to generate evoved forms of pokemon
     //need to make sure to only generate pokemon that can be found at the current gym level
     switch (gym_level) {
-    case 0: // df=[0'
+	case 0: // starter pokemon
         pool = { "Charmander", "Squirtle", "Bulbasaur" };
         break;
     case 1: // beginning wilds
