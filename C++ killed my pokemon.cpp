@@ -1368,3 +1368,5 @@ void riddle8() {
             //punishment
 		}
 };
+
+//this records the players pokemon
