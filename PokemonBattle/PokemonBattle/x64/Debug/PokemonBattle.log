@@ -1,0 +1,3 @@
+﻿  PokemonBattleIDK.cpp
+C:\Users\2020920\Desktop\cpp2025\Chapter 13\PokemonBattle\PokemonBattle\PokemonBattleIDK.cpp(217,27): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  PokemonBattle.vcxproj -> C:\Users\2020920\Desktop\cpp2025\Chapter 13\PokemonBattle\x64\Debug\PokemonBattle.exe
