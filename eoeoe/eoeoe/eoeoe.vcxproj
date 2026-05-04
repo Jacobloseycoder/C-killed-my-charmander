@@ -123,8 +123,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="Enemies.cpp" />
+=======
+    <ClCompile Include="Brock.cpp" />
+>>>>>>> acb77cd2e76e64705c07de31c3bc23e09502d766
     <ClCompile Include="eoeoe.cpp" />
+    <ClCompile Include="LtSurge.cpp" />
+    <ClCompile Include="Misty.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Brock.h" />
+    <ClInclude Include="LtSurge.h" />
+    <ClInclude Include="Misty.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemies.h" />

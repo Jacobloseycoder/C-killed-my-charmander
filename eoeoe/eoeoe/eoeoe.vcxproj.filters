@@ -18,12 +18,32 @@
     <ClCompile Include="eoeoe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Enemies.cpp">
+=======
+    <ClCompile Include="Brock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Misty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LtSurge.cpp">
+>>>>>>> acb77cd2e76e64705c07de31c3bc23e09502d766
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClInclude Include="Enemies.h">
+=======
+    <ClInclude Include="Brock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Misty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LtSurge.h">
+>>>>>>> acb77cd2e76e64705c07de31c3bc23e09502d766
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
