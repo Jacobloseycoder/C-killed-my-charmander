@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\Ghost\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1EBF7913-77DA-41F9-9387-909334C4BCF3}|Ghost\\Ghost.vcxproj|C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\Ghost\\Ghost\\Ghost.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1EBF7913-77DA-41F9-9387-909334C4BCF3}|Ghost\\Ghost.vcxproj|solutionrelative:Ghost\\Ghost.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EBF7913-77DA-41F9-9387-909334C4BCF3}|Ghost\\Ghost.vcxproj|C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\Ghost\\Ghost\\Agatha.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1EBF7913-77DA-41F9-9387-909334C4BCF3}|Ghost\\Ghost.vcxproj|solutionrelative:Ghost\\Agatha.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Agatha.h",
+              "DocumentMoniker": "C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\Ghost\\Ghost\\Agatha.h",
+              "RelativeDocumentMoniker": "Ghost\\Agatha.h",
+              "ToolTip": "C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\Ghost\\Ghost\\Agatha.h",
+              "RelativeToolTip": "Ghost\\Agatha.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-01T18:33:20.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Ghost.cpp",
+              "DocumentMoniker": "C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\Ghost\\Ghost\\Ghost.cpp",
+              "RelativeDocumentMoniker": "Ghost\\Ghost.cpp",
+              "ToolTip": "C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\Ghost\\Ghost\\Ghost.cpp",
+              "RelativeToolTip": "Ghost\\Ghost.cpp",
+              "ViewState": "AgIAACsAAAAAAAAAAAAkwI0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-01T18:33:03.563Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
