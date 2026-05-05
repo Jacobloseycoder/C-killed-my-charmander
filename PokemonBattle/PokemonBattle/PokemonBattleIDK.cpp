@@ -1247,7 +1247,117 @@ int main()
                                                                                                     hp -= attk;
                                                                                                     if (hp <= 0)
                                                                                                     {
-                                                                                                        cout << "Your Pokemon fainted! Chose another Pokemon!" << endl;
+                                                                                                        cout << "Enter the name of your pokemon: ";
+                                                                                                        cin >> name;
+                                                                                                        bat.setNameP1(name);
+                                                                                                        if (name.empty())
+                                                                                                        {
+                                                                                                            cout << "Please enter a valid pokemon name." << endl;
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            string targetName = bat.getNameP1();
+
+                                                                                                            auto it = std::find_if(pokedex.begin(), pokedex.end(), [&](const vector<string>& p) {
+                                                                                                                return p[0] == targetName;
+                                                                                                                });
+                                                                                                            if (it != pokedex.end()) {
+                                                                                                                int hp = stoi((*it)[1]);
+                                                                                                                int attk = stoi((*it)[2]);
+                                                                                                                string move1 = (*it)[3];
+                                                                                                                string move2 = (*it)[4];
+                                                                                                                string move3 = (*it)[5];
+                                                                                                                string move4 = (*it)[6];
+                                                                                                                bat.setHpP1(hp);
+                                                                                                                bat.setAttkP1(attk);
+                                                                                                                bat.setMove1P1(move1);
+                                                                                                                bat.setMove2P1(move2);
+                                                                                                                bat.setMove3P1(move3);
+                                                                                                                bat.setMove4P1(move4);
+
+                                                                                                                if (it != pokedex.end()) {
+                                                                                                                    int index = std::distance(pokedex.begin(), it);
+                                                                                                                    if ((*it)[0] == bat.getNameP1())
+                                                                                                                    {
+                                                                                                                        cout << "You used " << bat.getNameP1() << "!" << endl;
+                                                                                                                        cout << "Your HP is " << bat.getHpP1() << ". Prepare for battle!" << endl;
+                                                                                                                        int choice = 0;
+                                                                                                                        while (choice < 1 || choice > 4)
+                                                                                                                        {
+                                                                                                                            cout << "Choose a move: " << endl;
+                                                                                                                            cout << "1. " << bat.getMove1P1() << "\tDamage: " << bat.getAttkP1() << endl;
+                                                                                                                            cout << "2. " << bat.getMove2P1() << "\t\tDamage: " << bat.getAttkP1() << endl;
+                                                                                                                            cout << "3. " << bat.getMove3P1() << "\tDamage: " << bat.getAttkP1() << endl;
+                                                                                                                            cout << "4. " << bat.getMove4P1() << "\tDamage: " << bat.getAttkP1() << endl;
+                                                                                                                            cout << ":> ";
+                                                                                                                            cin >> choice;
+
+                                                                                                                            switch (choice)
+                                                                                                                            {
+                                                                                                                            case 1:
+                                                                                                                                cout << "You used " << bat.getMove1P1() << "!" << endl;
+                                                                                                                                cout << "It dealt " << bat.getAttkP1() << " damage!" << endl;
+                                                                                                                                hp -= attk;
+                                                                                                                                if (hp <= 0)
+                                                                                                                                {
+                                                                                                                                    cout << "Your Pokemon fainted! Ch!" << endl;
+
+                                                                                                                                }
+                                                                                                                                else
+                                                                                                                                    cout << "You now have " << hp << " HP left!" << endl;
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                cout << "You used " << bat.getMove2P1() << "!" << endl;
+                                                                                                                                cout << "It dealt " << bat.getAttkP1() << " damage!" << endl;
+                                                                                                                                hp -= bat.getAttkP1();
+                                                                                                                                if (hp <= 0)
+                                                                                                                                {
+                                                                                                                                    cout << "Your Pokemon fainted! Game Over!" << endl;
+
+                                                                                                                                }
+                                                                                                                                else
+                                                                                                                                    cout << "You now have " << hp << " HP left!" << endl;
+                                                                                                                                break;
+                                                                                                                            case 3:
+                                                                                                                                cout << "You used " << bat.getMove3P1() << "!" << endl;
+                                                                                                                                cout << "It dealt " << bat.getAttkP1() << " damage!" << endl;
+                                                                                                                                hp -= bat.getAttkP1();
+                                                                                                                                if (hp <= 0)
+                                                                                                                                {
+                                                                                                                                    cout << "Your Pokemon fainted! Game Over!" << endl;
+
+                                                                                                                                }
+                                                                                                                                else
+                                                                                                                                    cout << "You now have " << hp << " HP left!" << endl;
+                                                                                                                                break;
+                                                                                                                            case 4:
+                                                                                                                                cout << "You used " << bat.getMove4P1() << "!" << endl;
+                                                                                                                                cout << "It dealt " << bat.getAttkP1() << " damage!" << endl;
+                                                                                                                                hp -= bat.getAttkP1();
+                                                                                                                                if (hp <= 0)
+                                                                                                                                {
+                                                                                                                                    cout << "Your Pokemon fainted! Game Over!" << endl;
+
+                                                                                                                                }
+                                                                                                                                else
+                                                                                                                                    cout << "You now have " << hp << " HP left!" << endl;
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                cout << "Invalid choice. Please choose a move between 1 and 4." << endl;
+                                                                                                                                break;
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+
+
+                                                                                                                }
+                                                                                                                else
+                                                                                                                {
+                                                                                                                    cout << "Pokemon not found. Please enter a valid pokemon name." << endl;
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
 
                                                                                                     }
                                                                                                     else
