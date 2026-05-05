@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\Pokemon Gyms All Together\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A1190134-01D9-4117-BB47-87632F45C413}|Pokemon Gyms All Together\\Pokemon Gyms All Together.vcxproj|C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\Pokemon Gyms All Together\\Pokemon Gyms All Together\\Pokemon Gyms All Together.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A1190134-01D9-4117-BB47-87632F45C413}|Pokemon Gyms All Together\\Pokemon Gyms All Together.vcxproj|solutionrelative:Pokemon Gyms All Together\\Pokemon Gyms All Together.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Pokemon Gyms All Together.cpp",
+              "DocumentMoniker": "C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\Pokemon Gyms All Together\\Pokemon Gyms All Together\\Pokemon Gyms All Together.cpp",
+              "RelativeDocumentMoniker": "Pokemon Gyms All Together\\Pokemon Gyms All Together.cpp",
+              "ToolTip": "C:\\Users\\2017249\\Desktop\\C-killed-my-charmander\\Pokemon Gyms All Together\\Pokemon Gyms All Together\\Pokemon Gyms All Together.cpp",
+              "RelativeToolTip": "Pokemon Gyms All Together\\Pokemon Gyms All Together.cpp",
+              "ViewState": "AgIAABkIAAAAAAAAAAAAABwAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-05T18:18:37.512Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

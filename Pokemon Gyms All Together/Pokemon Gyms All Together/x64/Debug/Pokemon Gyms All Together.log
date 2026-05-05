@@ -1,0 +1,3 @@
+﻿  Pokemon Gyms All Together.cpp
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\2017249\Desktop\C-killed-my-charmander\Pokemon Gyms All Together\x64\Debug\Pokemon Gyms All Together.exe : fatal error LNK1120: 1 unresolved externals
