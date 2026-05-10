@@ -1106,16 +1106,49 @@ Pokemon generateWildPokemon(int gym_level)
 {
     vector<string> pool;
     switch (gym_level) {
-    case 0:
+    case 0: // starter pokemon
         pool = { "Charmander", "Squirtle", "Bulbasaur" };
         break;
-    case 1:
+    case 1: // beginning wilds
         pool = { "Pidgey", "Rattata", "Magikarp" };
         break;
-    case 2:
-        pool = { "Zubat", "Pikachu", "Geodude" };
+    case 2: // after Brock
+        pool = { "Weedle", "Caterpie", "Pikachu", "Nidoran (F)", "Diglett" };
         break;
-    default:
+    case 3: // after Misty
+        pool = { "Spearow", "Psyduck", "Slowpoke", "Goldeen", "Mankey", "Sandshrew", "Poliwag", "Jigglypuff", "Zubat", "Geodude", "Onix", "Paras" };
+        break;
+    case 4: // after rival battle 2 (mix of earlier)
+        pool = { "Pidgey", "Rattata", "Weedle", "Caterpie", "Pikachu", "Diglett", "Spearow", "Psyduck", "Zubat", "Geodude" };
+        break;
+    case 5: // after Lt. Surge
+        pool = { "Voltorb", "Magnemite", "Electabuzz", "Muk" };
+        break;
+    case 6: // after Erika
+        pool = { "Gastly", "Machop", "Cubone", "Hitmonlee", "Hitmonchan", "Oddish", "Bellsprout", "Krabby", "Horsea" };
+        break;
+    case 7: // after Koga (poison-themed)
+        pool = { "Koffing", "Weezing", "Zubat", "Golbat", "Venonat", "Venomoth" };
+        break;
+    case 8: // after rival battle 3
+        pool = { "Growlithe", "Abra", "Machop", "Bellsprout", "Ponyta", "Oddish" };
+        break;
+    case 9: // after Sabrina
+        pool = { "Abra", "Drowzee", "Krabby", "Cubone", "Ponyta" };
+        break;
+    case 10: // after rival battle 4
+        pool = { "Geodude", "Graveler", "Onix", "Shellder", "Krabby" };
+        break;
+    case 11: // after Blaine
+        pool = { "Magmar", "Electabuzz", "Pinsir", "Tauros", "Scyther" };
+        break;
+    case 12: // after rival battle 5
+        pool = { "Omanyte", "Kabuto", "Aerodactyl", "Dratini", "Horsea" };
+        break;
+    case 13: // after Giovanni
+        pool = { "Rhydon", "Gyarados", "Lapras", "Snorlax", "Gengar" };
+        break;
+    default: // late game / fallback
         pool = { "Rattata", "Pidgey", "Zubat" };
         break;
     }
