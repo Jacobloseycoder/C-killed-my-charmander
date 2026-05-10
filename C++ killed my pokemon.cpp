@@ -12,7 +12,7 @@ using namespace std;
  // - Starter selection
  // - Random wild Pokemon generator by gym level
  // - A couple of gym leaders with a riddle check
- // - Simple turn-based battle (no external Battle.h dependency)
+ // - Simple turn-based battle
 
 struct Pokemon
 {
@@ -22,12 +22,61 @@ struct Pokemon
     vector<string> moves;
 };
 
-static std::mt19937& rng()
+// Stores ALL Pokémon the player owns
+vector<Pokemon> playerCollection;
+
+// Stores the 6 Pokémon currently used for battles
+vector<Pokemon> battleTeam;
+
+// Function to add Pokémon to the player's collection
+void AddPokemonToCollection(const Pokemon& pokemon)
 {
-    static std::mt19937 gen(static_cast<unsigned>(chrono::high_resolution_clock::now().time_since_epoch().count()));
-    return gen;
+    playerCollection.push_back(pokemon);
 }
 
+// Function to add Pokémon to the battle team
+bool AddPokemonToBattleTeam(const Pokemon& pokemon)
+{
+    // Team limit = 6
+    if (battleTeam.size() >= 6)
+    {
+        cout << "Battle team is full!\n";
+        return false;
+    }
+
+    battleTeam.push_back(pokemon);
+    return true;
+}
+
+// Function to display a Pokémon list
+void DisplayPokemonList(const vector<Pokemon>& list)
+{
+    for (const auto& p : list)
+    {
+        cout << p.name
+            << " | attack: " << p.attack
+            << " | HP: " << p.hp << '\n';
+    }
+}
+
+int main()
+{
+    // Add to collection
+    AddPokemonToCollection(pikachu);
+    AddPokemonToCollection(charizard);
+
+    // Add to battle team
+    AddPokemonToBattleTeam(pikachu);
+    AddPokemonToBattleTeam(charizard);
+
+    std::cout << "\n=== Player Collection ===\n";
+    DisplayPokemonList(playerCollection);
+
+    std::cout << "\n=== Battle Team ===\n";
+    DisplayPokemonList(battleTeam);
+
+    return 0;
+}
 // Trimmed pokedex: expand as needed. Each entry includes moves for display.
 vector<Pokemon> pokedex = {
    {"Bulbasaur","45","49","VineWhip","Tackle","LeechSeed","Growl"},
@@ -1214,10 +1263,10 @@ int main()
     }});
 
     // Simplified gym leader teams
-    vector<Pokemon> brockTeam = { { "Geodude", 40, 80, 5, { "Rock Throw", "Rollout" } },
-                                 { "Onix", 35, 90, 6, { "Rock Tomb", "Sandstorm" } } };
-    vector<Pokemon> mistyTeam = { { "Psyduck", 50, 51, 5, { "Water Gun", "Confusion" } },
-                                 { "Staryu", 30, 45, 5, { "Water Gun", "Rapid Spin" } } };
+    vector<Pokemon> brockTeam = { { "Geodude", 40, 80, { "Rock Throw", "Rollout" } },
+                                 { "Onix", 35, 90, { "Rock Tomb", "Sandstorm" } } };
+    vector<Pokemon> mistyTeam = { { "Psyduck", 50, 51, { "Water Gun", "Confusion" } },
+                                 { "Staryu", 30, 45, { "Water Gun", "Rapid Spin" } } };
 
     for (size_t i = 0; i < gymRiddles.size(); ++i) {
         cout << "\nArrived at Gym " << (i + 1) << " (" << gymRiddles[i].first << ").\n";
