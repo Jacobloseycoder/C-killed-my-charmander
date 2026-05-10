@@ -258,10 +258,10 @@ pokemon Mew = { "Mew",  100, 100, 100, 100, 100, 100, 50, "psychic", {Psychic, T
 //all moves that will use special attack is marked as true, and all moves that will use physical attack is marked as false
 move Absorb = { "Absorb", "grass", 20, true };
 move Acid = { "Acid", "poison", 40, true };
-move Agility = { "Agility", "normal", 0, false };
+move Agility = { "Agility", "normal", 50, false };
 move AncientPower = { "AncientPower", "rock", 60, true };
 move AuroraBeam = { "AuroraBeam", "ice", 65, true };
-move Barrier = { "Barrier", "psychic", 0, true };
+move Barrier = { "Barrier", "psychic", 100, true };
 move Bite = { "Bite", "dark", 60, false };
 move BlazeKick = { "BlazeKick", "fire", 85, false };
 move BodySlam = { "BodySlam", "normal", 85, false };
@@ -270,10 +270,10 @@ move Bonemerang = { "Bonemerang", "ground", 50, false };
 move Bounce = { "Bounce", "flying", 60, false };
 move Bubble = { "Bubble", "water", 40, true };
 move BubbleBeam = { "BubbleBeam", "water", 65, true };
-move BulkUp = { "BulkUp", "fighting", 0, true };
+move BulkUp = { "BulkUp", "fighting", 10, true };
 move BugBite = { "BugBite", "bug", 60, false };
 move BugBuzz = { "BugBuzz", "bug", 90, false };
-move CalmMind = { "CalmMind", "psychic", 0, true };
+move CalmMind = { "CalmMind", "psychic", 70, true };
 move Clamp = { "Clamp", "water", 35, false };
 move CloseCombat = { "CloseCombat", "fighting", 85, false };
 move ConfuseRay = { "ConfuseRay", "ghost", 50, true };
@@ -281,7 +281,7 @@ move Confusion = { "Confusion", "psychic", 80, true };
 move Crabhammer = { "Crabhammer", "water", 90, false };
 move Crunch = { "Crunch", "dark", 80, false };
 move Curse = { "Curse", "ghost", 30, true };
-move DefenseCurl = { "DefenseCurl", "normal", 0, true };
+move DefenseCurl = { "DefenseCurl", "normal", 20, true };
 move Disable = { "Disable", "normal", 15, true };
 move DoubleKick = { "DoubleKick", "fighting", 30, false };
 move DoubleSlap = { "DoubleSlap", "normal", 15, false };
@@ -306,8 +306,8 @@ move FocusEnergy = { "FocusEnergy", "normal", 70, true };
 move FuryAttack = { "FuryAttack", "normal", 15, false };
 move FuryCutter = { "FuryCutter", "bug", 40, false };
 move GigaDrain = { "GigaDrain", "grass", 60, true };
-move Glare = { "Glare", "normal", 0, true };
-move Growl = { "Growl", "normal", 0, true };
+move Glare = { "Glare", "normal", 50, true };
+move Growl = { "Growl", "normal", 50, true };
 move Gust = { "Gust", "flying", 40, true };
 move Harden = { "Harden", "normal", 0, true };
 move Headbutt = { "Headbutt", "normal", 70, false };
@@ -326,8 +326,8 @@ move JumpKick = { "JumpKick", "fighting", 100, false };
 move KarateChop = { "KarateChop", "fighting", 50, false };
 move LeechLife = { "LeechLife", "grass", 20, true };
 move LeechSeed = { "LeechSeed", "grass", 30, true };
-move Leer = { "Leer", "normal", 0, true };
-move LightScreen = { "LightScreen", "psychic", 0, true };
+move Leer = { "Leer", "normal", 60, true };
+move LightScreen = { "LightScreen", "psychic", 60, true };
 move Lick = { "Lick", "ghost", 30, true };
 move LovelyKiss = { "LovelyKiss", "normal", 120, true };
 move LowKick = { "LowKick", "fighting", 65, false };
@@ -337,7 +337,7 @@ move MegaKick = { "MegaKick", "fighting", 120, false };
 move Megahorn = { "Megahorn", "bug", 120, false };
 move MetalClaw = { "MetalClaw", "steel", 50, false };
 move Metronome = { "Metronome", "normal", 40, true };
-move Minimize = { "Minimize", "normal", 0, true };
+move Minimize = { "Minimize", "normal", 50, true };
 move Moonblast = { "Moonblast", "fairy", 90, true };
 move Moonlight = { "Moonlight", "fairy", 45, true };
 move MudShot = { "MudShot", "ground", 55, true };
@@ -356,7 +356,7 @@ move Pound = { "Pound", "normal", 40, false };
 move Psychic = { "Psychic", "psychic", 90, true };
 move Psybeam = { "Psybeam", "psychic", 65, true };
 move QuickAttack = { "QuickAttack", "normal", 40, false };
-move QuiverDance = { "QuiverDance", "bug", 0, true };
+move QuiverDance = { "QuiverDance", "bug", 60, true };
 move RazorLeaf = { "RazorLeaf", "grass", 55, false };
 move Recover = { "Recover", "normal", 0, true };
 move Reflect = { "Reflect", "psychic", 50, true };
@@ -366,7 +366,7 @@ move RockSlide = { "RockSlide", "rock", 75, true };
 move RockThrow = { "RockThrow", "rock", 50, true };
 move RockTomb = { "RockTomb", "rock", 60, true };
 move Rollout = { "Rollout", "rock", 30, true };
-move Roar = { "Roar", "normal", 0, true };
+move Roar = { "Roar", "normal", 10, true };
 move SandAttack = { "SandAttack", "ground", 60, true };
 move Sandstorm = { "Sandstorm", "ground", 80, true };
 move Scratch = { "Scratch", "normal", 40, false };
@@ -396,14 +396,14 @@ move StoneEdge = { "StoneEdge", "rock", 100, true };
 move Strength = { "Strength", "normal", 80, false };
 move Substitute = { "Substitute", "normal", 50, true };
 move SuckerPunch = { "SuckerPunch", "dark", 70, false };
-move SunnyDay = { "SunnyDay", "fire", 0, true };
+move SunnyDay = { "SunnyDay", "fire", 20, true };
 move Supersonic = { "Supersonic", "normal", 120, true };
 move Surf = { "Surf", "water", 90, true };
 move Swift = { "Swift", "normal", 60, true };
-move SwordsDance = { "SwordsDance", "normal", 0, true };
+move SwordsDance = { "SwordsDance", "normal", 50, true };
 move TailWhip = { "TailWhip", "normal", 40, true };
 move Tackle = { "Tackle", "normal", 40, false };
-move Teleport = { "Teleport", "psychic", 0, true };
+move Teleport = { "Teleport", "psychic", 20, true };
 move ThunderPunch = { "ThunderPunch", "electric", 75, false };
 move ThunderShock = { "ThunderShock", "electric", 40, true };
 move ThunderWave = { "ThunderWave", "electric", 50, true };
@@ -419,8 +419,8 @@ move VineWhip = { "VineWhip", "grass", 45, false };
 move WaterGun = { "WaterGun", "water", 40, true };
 move WaterPulse = { "WaterPulse", "water", 60, true };
 move Waterfall = { "Waterfall", "water", 80, true };
-move Whirlwind = { "Whirlwind", "normal", 0, true };
-move WillOWisp = { "WillOWisp", "fire", 0, true };
+move Whirlwind = { "Whirlwind", "normal", 80, true };
+move WillOWisp = { "WillOWisp", "fire", 70, true };
 move WingAttack = { "WingAttack", "flying", 60, false };
 move Wish = { "Wish", "normal", 40, true };
 move Withdraw = { "Withdraw", "water", 50, true };
@@ -905,15 +905,6 @@ void UseMove(Pokemon& attacker,
 
     Move& move = attacker.moves[moveIndex];
 
-    // Check PP
-    if (move.pp <= 0)
-    {
-        cout << move.name << " has no PP left!\n";
-        return;
-    }
-
-    move.pp--;
-
     cout << attacker.name
         << " used "
         << move.name
@@ -947,13 +938,3 @@ void UseMove(Pokemon& attacker,
         << "/"
         << defender.maxHp
         << endl;
-
-    // Status effects
-    if (move.effect != "none")
-    {
-        cout << defender.name
-            << " may be affected by "
-            << move.effect
-            << "!\n";
-    }
-}
