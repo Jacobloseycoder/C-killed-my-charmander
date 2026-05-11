@@ -550,51 +550,52 @@ void generatepokemon(int gym_level)
 
 //player battles
 //need to make it so enemy can use all there pokemon and not just one
-bool Battle(Pokemon& enemy) {
+// Battle function that accepts an enemy team and lets the enemy use its full roster
+bool battle(vector<Pokemon>& enemyTeam) {
+    // Find first alive player Pokemon
     int activeIdx = 0;
-	int enemyactiveIdx = 0;
-
-    // Find first alive Pokemon (just in case)
-    while (activeIdx < battleTeam.size() && battleTeam[activeIdx].hp <= 0) {
+    while (activeIdx < (int)battleTeam.size() && battleTeam[activeIdx].hp <= 0) {
         activeIdx++;
     }
-
-    if (activeIdx >= battleTeam.size()) {
+    if (activeIdx >= (int)battleTeam.size()) {
         cout << "You have no healthy Pokemon to battle!\n";
         return false;
     }
-    // Find first alive Pokemon (just in case)
-    while (enemyactiveIdx < battleTeam.size() && battleTeam[enemyactiveIdx].hp <= 0) {
-        enemyactiveIdx++;
-    }
 
-    if (enemyactiveIdx >= battleTeam.size()) {
-        cout << "your opponent has no healthy Pokemon to battle!\n";
-        return false;
+    // Find first alive enemy Pokemon
+    int enemyActive = 0;
+    while (enemyActive < (int)enemyTeam.size() && enemyTeam[enemyActive].hp <= 0) {
+        enemyActive++;
+    }
+    if (enemyActive >= (int)enemyTeam.size()) {
+        cout << "Enemy has no healthy Pokemon to battle!\n";
+        return true;
     }
 
     cout << "\n============================================\n";
-    cout << "A wild " << enemy.name << " appeared!\n";
+    cout << "A wild " << enemyTeam[enemyActive].name << " appeared!\n";
     cout << "Go! " << battleTeam[activeIdx].name << "!\n";
     cout << "============================================\n";
 
-    while (IsTeamAlive() && enemy.hp > 0) {
-        Pokemon& activePlayer = battleTeam[activeIdx];
+    // Main battle loop continues until one side has no alive Pokemon
+    while (IsTeamAlive() && IsEnemyAlive(enemyTeam)) {
+        Pokemon& currentPlayer = battleTeam[activeIdx];
+        Pokemon& currentEnemy = enemyTeam[enemyActive];
 
         // Display UI
         cout << "\n--------------------------------------------\n";
-        cout << "[" << activePlayer.name << " HP: " << activePlayer.hp << "/" << activePlayer.maxHp << "]  VS  "
-            << "[" << enemy.name << " HP: " << enemy.hp << "/" << enemy.maxHp << "]\n";
+        cout << "[" << currentPlayer.name << " HP: " << currentPlayer.hp << "/" << currentPlayer.maxHp << "]  VS  "
+            << "[" << currentEnemy.name << " HP: " << currentEnemy.hp << "/" << currentEnemy.maxHp << "]\n";
         cout << "--------------------------------------------\n";
 
-        // 1. Player chooses action
+        // 1. Player chooses action (fight or switch)
         int action = 0;
         bool validAction = false;
         bool playerSwitched = false;
-        Move playerMove;
+        Move* playerMovePtr = nullptr;
 
         while (!validAction) {
-            cout << "What will " << activePlayer.name << " do?\n";
+            cout << "What will " << currentPlayer.name << " do?\n";
             cout << "1. Fight\n";
             cout << "2. Switch Pokemon\n";
             cout << "> ";
@@ -608,22 +609,22 @@ bool Battle(Pokemon& enemy) {
 
             if (action == 1) {
                 cout << "Choose a move:\n";
-                for (size_t i = 0; i < activePlayer.moves.size(); ++i) {
-                    cout << i + 1 << ". " << activePlayer.moves[i].name
-                        << " (Type: " << activePlayer.moves[i].type << ", Pwr: " << activePlayer.moves[i].power << ")\n";
+                for (size_t i = 0; i < currentPlayer.moves.size(); ++i) {
+                    cout << i + 1 << ". " << currentPlayer.moves[i].name
+                        << " (Type: " << currentPlayer.moves[i].type << ", Pwr: " << currentPlayer.moves[i].power << ")\n";
                 }
                 cout << "0. Cancel\n> ";
 
                 int moveChoice = 0;
-                if (!(cin >> moveChoice) || moveChoice < 0 || moveChoice > static_cast<int>(activePlayer.moves.size())) {
+                if (!(cin >> moveChoice) || moveChoice < 0 || moveChoice > static_cast<int>(currentPlayer.moves.size())) {
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     cout << "Invalid input.\n";
                     continue;
                 }
-                if (moveChoice == 0) continue; // Go back to action selection
+                if (moveChoice == 0) continue; // back to action selection
 
-                playerMove = activePlayer.moves[moveChoice - 1];
+                playerMovePtr = &currentPlayer.moves[moveChoice - 1];
                 validAction = true;
             }
             else if (action == 2) {
@@ -640,19 +641,19 @@ bool Battle(Pokemon& enemy) {
                     cout << "Invalid input.\n";
                     continue;
                 }
-                if (switchChoice == 0) continue; // Cancel switch
+                if (switchChoice == 0) continue;
 
                 int targetIdx = switchChoice - 1;
                 if (targetIdx == activeIdx) {
-                    cout << activePlayer.name << " is already in battle!\n";
+                    cout << battleTeam[targetIdx].name << " is already in battle!\n";
                     continue;
                 }
                 if (battleTeam[targetIdx].hp <= 0) {
-                    cout << battleTeam[targetIdx].name << " was killed and cannot battle anymore!\n";
+                    cout << battleTeam[targetIdx].name << " has no energy left to battle!\n";
                     continue;
                 }
 
-                cout << "Come back " << activePlayer.name << "!\n";
+                cout << "Come back " << currentPlayer.name << "!\n";
                 activeIdx = targetIdx;
                 cout << "Go! " << battleTeam[activeIdx].name << "!\n";
                 playerSwitched = true;
@@ -660,35 +661,46 @@ bool Battle(Pokemon& enemy) {
             }
         }
 
-        // We must re-reference currentPlayer in case activeIdx changed during switch
-        Pokemon& currentPlayer = battleTeam[activeIdx];
+        // Re-reference player after possible switch
+        Pokemon& activePlayer = battleTeam[activeIdx];
 
-        // 2. Enemy chooses random move
-        int enemyChoice = rand() % enemy.moves.size();
-        Move& enemyMove = enemy.moves[enemyChoice];
+        // 2. Enemy selects a move (simple AI: random)
+        int enemyMoveIdx = rand() % currentEnemy.moves.size();
+        Move& enemyMove = currentEnemy.moves[enemyMoveIdx];
 
-        // 3. Execute Turn Logic
+        // 3. Execute turn logic
         if (playerSwitched) {
-            // Player switched, enemy attacks the NEW pokemon
-            ExecuteTurn(enemy, currentPlayer, enemyMove);
+            // Enemy attacks the newly switched in pokemon
+            ExecuteTurn(currentEnemy, activePlayer, enemyMove);
         }
         else {
-            // Determine turn order based on Speed
-            bool playerFirst = currentPlayer.speed >= enemy.speed;
-
+            bool playerFirst = activePlayer.speed >= currentEnemy.speed;
             if (playerFirst) {
-                ExecuteTurn(currentPlayer, enemy, playerMove);
-                if (enemy.hp > 0) ExecuteTurn(enemy, currentPlayer, enemyMove);
+                if (playerMovePtr) ExecuteTurn(activePlayer, currentEnemy, *playerMovePtr);
+                if (currentEnemy.hp > 0) ExecuteTurn(currentEnemy, activePlayer, enemyMove);
             }
             else {
-                ExecuteTurn(enemy, currentPlayer, enemyMove);
-                if (currentPlayer.hp > 0) ExecuteTurn(currentPlayer, enemy, playerMove);
+                ExecuteTurn(currentEnemy, activePlayer, enemyMove);
+                if (activePlayer.hp > 0 && playerMovePtr) ExecuteTurn(activePlayer, currentEnemy, *playerMovePtr);
             }
         }
 
-        // 4. Force switch if current Pokemon fainted (and team is still alive)
-        if (currentPlayer.hp <= 0 && enemy.hp > 0 && IsTeamAlive()) {
-            cout << "\n" << currentPlayer.name << " fainted!\n";
+        // If enemy fainted, move to next alive enemy Pokemon
+        if (currentEnemy.hp <= 0) {
+            cout << "\n" << currentEnemy.name << " fainted!\n";
+            enemyActive++;
+            if (enemyActive < (int)enemyTeam.size()) {
+                // find next alive
+                while (enemyActive < (int)enemyTeam.size() && enemyTeam[enemyActive].hp <= 0) enemyActive++;
+                if (enemyActive < (int)enemyTeam.size()) {
+                    cout << "Enemy sends out " << enemyTeam[enemyActive].name << "!\n";
+                }
+            }
+        }
+
+        // If player's active fainted and still has Pokemon, force switch
+        if (activePlayer.hp <= 0 && IsTeamAlive()) {
+            cout << "\n" << activePlayer.name << " fainted!\n";
             bool validSwitch = false;
             while (!validSwitch) {
                 cout << "Choose your next Pokemon:\n";
@@ -713,18 +725,16 @@ bool Battle(Pokemon& enemy) {
                 validSwitch = true;
             }
         }
-    };
+    }
 
-    // Battle Conclusion
+    // Battle conclusion
     cout << "\n============================================\n";
     if (IsTeamAlive()) {
-        cout << enemy.name << " fainted!\n";
-        cout << "You win the battle!\n";
+        cout << "Enemy team is defeated! You win the battle!\n";
         return true;
     }
     else {
-        cout << "All your Pokemon fainted!\n";
-        cout << "You white out...\n";
+        cout << "All your Pokemon fainted! You white out...\n";
         return false;
     }
 };
@@ -909,7 +919,8 @@ bool IsTeamAlive() {
     return false;
 };
 
-bool IsEnemyAlive() {
+// Check if a given enemy team has any conscious Pokemon left
+bool IsEnemyAlive(const vector<Pokemon>& enemyTeam) {
     for (const auto& p : enemyTeam) {
         if (p.hp > 0) return true;
     }
