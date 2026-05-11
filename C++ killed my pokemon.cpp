@@ -4,7 +4,8 @@
 #include <random>
 #include <string>
 #include <vector>
-
+#include <ctime>
+#include <limits>
 using namespace std;
 
 struct Pokemon
@@ -72,13 +73,13 @@ void DisplayPokemon(const Pokemon& p) {
     }
     cout << "--------------" << endl;
 }
-
-void addpokemon()
+//need to add pokemon to collection and battle team
+void addpokemon(const Pokemon& pokemon)
 {
     // Add to collection
-    AddPokemonToCollection();
+    AddPokemonToCollection(pokemon);
     // Add to battle team
-    AddPokemonToBattleTeam();
+    AddPokemonToBattleTeam(pokemon);
 };
 
 void display() {
@@ -432,90 +433,302 @@ void generatepokemon(int gym_level)
 {
     vector<string> pool;
     switch (gym_level) {
-    case 0: // starter pokemon
-        pool = { "Charmander", "Squirtle", "Bulbasaur" };
-        break;
-    case 1: // beginning wilds
+    case 0: // beginning wilds
         pool = { "Pidgey", "Rattata", "Magikarp" };
         break;
-    case 2: // after Brock
+    case 1: // after Brock
         pool = { "Weedle", "Caterpie", "Pikachu", "Diglett" };
         break;
-    case 3: // after Misty
+    case 2: // after Misty
         pool = { "Spearow", "Psyduck", "Slowpoke", "Goldeen", "Mankey", "Sandshrew", "Poliwag", "Jigglypuff", "Zubat", "Geodude", "Onix", "Paras" };
         break;
-    case 4: // after rival battle 2 (mix of earlier)
+    case 3: // after rival battle 2 (mix of earlier)
         pool = { "Pidgey", "Rattata", "Weedle", "Caterpie", "Pikachu", "Diglett", "Spearow", "Psyduck", "Zubat", "Geodude" };
         break;
-    case 5: // after Lt. Surge
+    case 4: // after Lt. Surge
         pool = { "Voltorb", "Magnemite", "Electabuzz", "Muk" };
         break;
-    case 6: // after Erika
+    case 5: // after Erika
         pool = { "Gastly", "Machop", "Cubone", "Hitmonlee", "Hitmonchan", "Oddish", "Bellsprout", "Krabby", "Horsea" };
         break;
-    case 7: // after Koga (poison-themed)
+    case 6: // after Koga (poison-themed)
         pool = { "Koffing", "Weezing", "Zubat", "Golbat", "Venonat", "Venomoth" };
         break;
-    case 8: // after rival battle 3
+    case 7: // after rival battle 3
         pool = { "Growlithe", "Abra", "Machop", "Bellsprout", "Ponyta", "Oddish" };
         break;
-    case 9: // after Sabrina
+    case 8: // after Sabrina
         pool = { "Drowzee", "Krabby", "Cubone", "Ponyta" };
         break;
-    case 10: // after Blaine
+    case 9: // after Blaine
         pool = { "Magmar", "Electabuzz", "Pinsir", "Tauros", "Scyther" };
         break;
-    case 11: // after rival battle 5
+    case 10: // after rival battle 5
         pool = { "Omanyte", "Kabuto", "Aerodactyl", "Dratini", "Horsea" };
         break;
-    case 12: // after Giovanni
+    case 11: // after Giovanni
         pool = { "Rhydon", "Gyarados", "Lapras", "Snorlax", "Gengar" };
         break;
     default: // late game / fallback
         pool = { "Rattata", "Pidgey", "Zubat" };
         break;
     }
+	// let player choose from pool
+	cout << "Choose a Pokemon to add to your team:\n";
+	for (size_t i = 0; i < pool.size(); ++i) {
+		cout << i + 1 << ". " << pool[i] << "\n";
+	}
+	cout << "> ";
+	int choice = 0;
+	while (true) {
+		if (!(cin >> choice) || choice < 1 || choice > static_cast<int>(pool.size())) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Invalid input. Please enter a number between 1 and " << pool.size() << ".\n> ";
+			continue;
+		}
+		break;
+	}
+	string selectedName = pool[choice - 1];
+	Pokemon selectedPokemon;
+	// Map the selected name to the corresponding Pokemon object
+    if (selectedName == "Pidgey") selectedPokemon = "Pidgey", 40, 45, 40, 35, 55, 40, 20, "flying", { Gust, QuickAttack, WingAttack, MirrorMove };
+    else if (selectedName == "Rattata") selectedPokemon = "Rattata", 30, 56, 34, 35, 55, 45, 20, "normal", { Tackle, TailWhip, QuickAttack, HyperFang };
+    else if (selectedName == "Magikarp") selectedPokemon = "Magikarp", 20, 10, 55, 20, 100, 80, 20, "water", { Splash, Struggle };
+    else if (selectedName == "Weedle") selectedPokemon = "Weedle", 40, 35, 30, 20, 50, 45, 20, "bug", { PoisonSting, StringShot };
+    else if (selectedName == "Caterpie") selectedPokemon = "Caterpie", 45, 30, 35, 20, 45, 45, 20, "bug", { Tackle, StringShot };
+	else if (selectedName == "Pikachu") selectedPokemon = "Pikachu", 35, 55, 40, 50, 50, 90, 20, "electric", { ThunderShock, QuickAttack, Thunderbolt, ThunderWave };
+    else if (selectedName == "Diglett") selectedPokemon = "Diglett", 10, 55, 25, 35, 35, 65, 20, "ground", { Scratch, Growl, Dig, Slash };
+    else if (selectedName == "Spearow") selectedPokemon = "Spearow", 40, 60, 30, 31, 70, 70, 20, "flying", { Peck, Growl, Leer, FuryAttack };
+    else if (selectedName == "Psyduck") selectedPokemon = "Psyduck", 50, 70, 48, 50, 50, 55, 20, "water", { Scratch, Growl, Dig, Slash };
+    else if (selectedName == "Slowpoke") selectedPokemon = "Slowpoke", 90, 65, 65, 48, 48, 15, 20, "water", { Tackle, Growl, Dig, Slash };
+    else if (selectedName == "Goldeen") selectedPokemon = "Goldeen", 45, 67, 65, 35, 63, 60, 20, "water", { Tackle, Growl, Dig, Slash };
+    else if (selectedName == "Mankey") selectedPokemon = "Mankey", 40, 80, 35, 35, 70, 45, 20, "fighting", { Scratch, KarateChop, Foresight, SeismicToss };
+    else if (selectedName == "Sandshrew") selectedPokemon = "Sandshrew", 50, 75, 85, 20, 30, 65, 20, "ground", { Scratch, Growl, Dig, Slash };
+    else if (selectedName == "Poliwag") selectedPokemon = "Poliwag", 40, 50, 40, 40, 40, 90, 20, "water", { WaterGun, Hypnosis, DoubleSlap, BodySlam };
+    else if (selectedName == "Jigglypuff") selectedPokemon = "Jigglypuff", 115, 45, 20, 25, 20, 20, 20, "normal", { Sing, Disable, DefenseCurl, DoubleSlap };
+    else if (selectedName == "Zubat") selectedPokemon = "Zubat", 40, 45, 35, 30, 55, 55, 20, "flying", { LeechLife, Supersonic, Bite, ConfuseRay };
+    else if (selectedName == "Geodude") selectedPokemon = "Geodude", 40, 80, 100, 30, 30, 20, 20, "ground", { RockThrow, DefenseCurl, SelfDestruct, Harden };
+    else if (selectedName == "Onix") selectedPokemon = "Onix", 35, 45, 160, 30, 30, 70, 20, "ground", { RockThrow, DefenseCurl, SelfDestruct, Harden };
+    else if (selectedName == "Paras") selectedPokemon = "Paras", 35, 70, 55, 55, 60, 25, 20, "bug", { Absorb, StunSpore, LeechLife, Spore };
+	else if (selectedName == "Voltorb") selectedPokemon = "Voltorb", 40, 30, 50, 55, 55, 100, 20, "electric", { Tackle, Spark, SelfDestruct, Rollout };
+	else if (selectedName == "Magnemite") selectedPokemon = "Magnemite", 25, 35, 70, 95, 55, 45, 20, "electric", { Tackle, Spark, SelfDestruct, Rollout };
+    else if (selectedName == "Electabuzz") selectedPokemon = "Electabuzz", 65, 83, 57, 85, 95, 105, 20, "electric", { QuickAttack, ThunderShock, Thunderbolt, ThunderWave };
+    else if (selectedName == "Muk") selectedPokemon = "Muk", 105, 105, 75, 65, 100, 50, 38, "poison", { SludgeBomb, Minimize, Curse, Toxic };
+	else if (selectedName == "Gastly") selectedPokemon = "Gastly", 30, 35, 35, 30, 85, 55, 25, "ghost", { Lick, ShadowBall, DreamEater, NightShade };
+	else if (selectedName == "Machop") selectedPokemon = "Machop", 70, 80, 50, 35, 60, 35, 20, "fighting", { KarateChop, LowKick, SeismicToss, CrossChop };
+	else if (selectedName == "Cubone") selectedPokemon = "Cubone", 50, 50, 95, 40, 40, 35, 20, "ground", { BoneClub, Headbutt, FocusEnergy, FalseSwipe };
+	else if (selectedName == "Hitmonlee") selectedPokemon = "Hitmonlee", 50, 120, 75, 65, 80, 45, 20, "fighting", { HighJumpKick, RollingKick, JumpKick, DoubleKick };
+	else if (selectedName == "Hitmonchan") selectedPokemon = "Hitmonchan", 50, 110, 75, 65, 80, 45, 20, "fighting", { FirePunch, IcePunch, ThunderPunch, MachPunch };
+	else if (selectedName == "Oddish") selectedPokemon = "Oddish", 45, 50, 55, 35, 70, 30, 20, "grass", { Absorb, StunSpore, LeechLife, Spore };
+	else if (selectedName == "Bellsprout") selectedPokemon = "Bellsprout", 50, 75, 35, 70, 40, 40, 20, "grass", { VineWhip, Growth, Wrap, SleepPowder };
+	else if (selectedName == "Krabby") selectedPokemon = "Krabby", 30, 105, 90, 25, 25, 50, 20, "water", { Bubble, Leer, ViseGrip, Stomp };
+	else if (selectedName == "Horsea") selectedPokemon = "Horsea", 30, 40, 70, 70, 25, 60, 20, "water", { WaterGun, Leer, DragonBreath, HydroPump };
+	else if (selectedName == "Koffing") selectedPokemon = "Koffing", 40, 35, 95, 60, 45, 35, 20, "poison", { Tackle, Smog, Sludge, SelfDestruct };
+	else if (selectedName == "Weezing") selectedPokemon = "Weezing", 65, 90, 120, 85, 70, 60, 20, "poison", { Tackle, Smog, SludgeBomb, SelfDestruct };
+	else if (selectedName == "Golbat") selectedPokemon = "Golbat", 45, 45, 90, 30, 30, 75, 20, "flying", { Bite, Leer, WingAttack, ConfuseRay };
+	else if (selectedName == "Venonat") selectedPokemon = "Venonat", 60, 55, 50, 40, 55, 45, 20, "bug", { Tackle, Leer, ConfuseRay, PoisonPowder };
+	else if (selectedName == "Venomoth") selectedPokemon = "Venomoth", 70, 65, 60, 90, 75, 85, 20, "bug", { Tackle, Leer, ConfuseRay, PoisonPowder };
+	else if (selectedName == "Growlithe") selectedPokemon = "Growlithe", 55, 70, 45, 70, 50, 60, 20, "fire", { Bite, Leer, Ember, FireFang };
+	else if (selectedName == "Abra") selectedPokemon = "Abra", 25, 20, 120, 105, 55, 90, 20, "psychic", { Teleport, Confusion, Psybeam, Reflect };
+	else if (selectedName == "Machop") selectedPokemon = "Machop", 70, 80, 50, 35, 60, 35, 20, "fighting", { KarateChop, LowKick, SeismicToss, CrossChop };
+	else if (selectedName == "Bellsprout") selectedPokemon = "Bellsprout", 50, 75, 35, 70, 40, 40, 20, "grass", { VineWhip, Growth, Wrap, SleepPowder };
+	else if (selectedName == "Ponyta") selectedPokemon = "Ponyta", 50, 85, 55, 65, 40, 90, 20, "fire", { Tackle, Ember, QuickAttack, FireSpin };
+	else if (selectedName == "Drowzee") selectedPokemon = "Drowzee", 60, 48, 45, 43, 50, 42, 20, "psychic", { Pound, Hypnosis, Disable, Headbutt };
+	else if (selectedName == "Magmar") selectedPokemon = "Magmar" , 65, 95, 57, 100, 85, 93, 20, "fire", { Ember, Smokescreen, ConfuseRay, FlameBurst };
+	else if (selectedName == "Electabuzz") selectedPokemon = "Electabuzz" , 65, 83, 57, 85, 95, 105, 20, "electric", { QuickAttack, ThunderShock, Thunderbolt, ThunderWave };
+	else if (selectedName == "Pinsir") selectedPokemon = "Pinsir" , 65, 125, 100, 55, 70, 85, 20, "bug", { ViceGrip, SeismicToss, Guillotine, SwordsDance };
+	else if (selectedName == "Tauros") selectedPokemon = "Tauros" , 75, 100, 95, 40, 70, 110, 20, "normal", { Tackle, HornAttack, Stomp, Earthquake };
+	else if (selectedName == "Scyther") selectedPokemon = "Scyther" , 70, 110, 80, 55, 80, 105, 20, "bug", { QuickAttack, WingAttack, Slash, SwordsDance };
+	else if (selectedName == "Omanyte") selectedPokemon = "Omanyte" , 35, 40, 100, 90, 55, 35, 20, "water", { Scratch, Leer, WaterGun, Withdraw };
+	else if (selectedName == "Kabuto") selectedPokemon = "Kabuto" , 30, 80, 90, 55, 45, 70, 20, "rock", { Scratch, Leer, Absorb, Slash };
+	else if (selectedName == "Aerodactyl") selectedPokemon = "Aerodactyl" , 80, 105, 65, 60, 75, 130, 20, "rock", { WingAttack, Bite, IronHead, HyperBeam };
+	else if (selectedName == "Dratini") selectedPokemon = "Dratini" , 41, 64, 45, 50, 50, 50, 20, "dragon", { Wrap, Leer, ThunderWave, DragonBreath };
+	else if (selectedName == "Lapras") selectedPokemon = "Lapras" , 130, 85, 80, 85, 95, 60, 20, "water", { WaterGun, Sing, BodySlam, IceBeam };
+	else if (selectedName == "Snorlax") selectedPokemon = "Snorlax" , 160, 110, 65, 65, 110, 30, 20, "normal", { Tackle, Rest, BodySlam, HyperBeam };
+	else if (selectedName == "Gengar") selectedPokemon = "Gengar" , 60, 65, 60, 130, 75, 110, 20,"ghost", { Lick, Hypnosis, ShadowBall, DreamEater };
+	addpokemon(selectedPokemon);
 }
 
-// Simple turn-based battle: player attacks first; returns true if player wins
-bool Battle(Pokemon player, Pokemon enemy)
-{
-    cout << "Battle start: " << player.name << " (HP " << player.hp << ") vs "
-         << enemy.name << " (HP " << enemy.hp << ")\n";
+//player battles
+//need to make it so enemy can use all there pokemon and not just one
+bool Battle(Pokemon& enemy) {
+    int activeIdx = 0;
+	int enemyactiveIdx = 0;
 
-    while (player.hp > 0 && enemy.hp > 0) {
-        // Player turn: pick a move (1..moves)
-        cout << "\nYour turn. Choose a move:\n";
-        for (size_t i = 0; i < player.moves.size(); ++i) {
-            cout << (i + 1) << ". " << player.moves[i] << " (approx damage " << player.attack << ")\n";
-        }
-        cout << ":> ";
-        int choice = 1;
-        if (!(cin >> choice) || choice < 1 || choice > static_cast<int>(player.moves.size())) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input, defaulting to move 1.\n";
-            choice = 1;
-        }
-
-        cout << "You used " << player.moves[choice - 1] << "!\n";
-        enemy.hp -= player.attack;
-        if (enemy.hp <= 0) {
-            cout << enemy.name << " fainted. You win the battle!\n";
-            return true;
-        }
-        cout << enemy.name << " has " << enemy.hp << " HP remaining.\n";
-
-        // Enemy turn: simple AI picks first move
-        cout << enemy.name << " attacks with a move!\n";
-        player.hp -= enemy.attack;
-        if (player.hp <= 0) {
-            cout << player.name << " fainted. You lost the battle.\n";
-            return false;
-        }
-        cout << player.name << " has " << player.hp << " HP remaining.\n";
+    // Find first alive Pokemon (just in case)
+    while (activeIdx < battleTeam.size() && battleTeam[activeIdx].hp <= 0) {
+        activeIdx++;
     }
-    return player.hp > 0;
+
+    if (activeIdx >= battleTeam.size()) {
+        cout << "You have no healthy Pokemon to battle!\n";
+        return false;
+    }
+    // Find first alive Pokemon (just in case)
+    while (enemyactiveIdx < battleTeam.size() && battleTeam[enemyactiveIdx].hp <= 0) {
+        enemyactiveIdx++;
+    }
+
+    if (enemyactiveIdx >= battleTeam.size()) {
+        cout << "your opponent has no healthy Pokemon to battle!\n";
+        return false;
+    }
+
+    cout << "\n============================================\n";
+    cout << "A wild " << enemy.name << " appeared!\n";
+    cout << "Go! " << battleTeam[activeIdx].name << "!\n";
+    cout << "============================================\n";
+
+    while (IsTeamAlive() && enemy.hp > 0) {
+        Pokemon& activePlayer = battleTeam[activeIdx];
+
+        // Display UI
+        cout << "\n--------------------------------------------\n";
+        cout << "[" << activePlayer.name << " HP: " << activePlayer.hp << "/" << activePlayer.maxHp << "]  VS  "
+            << "[" << enemy.name << " HP: " << enemy.hp << "/" << enemy.maxHp << "]\n";
+        cout << "--------------------------------------------\n";
+
+        // 1. Player chooses action
+        int action = 0;
+        bool validAction = false;
+        bool playerSwitched = false;
+        Move playerMove;
+
+        while (!validAction) {
+            cout << "What will " << activePlayer.name << " do?\n";
+            cout << "1. Fight\n";
+            cout << "2. Switch Pokemon\n";
+            cout << "> ";
+
+            if (!(cin >> action) || (action != 1 && action != 2)) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid input.\n";
+                continue;
+            }
+
+            if (action == 1) {
+                cout << "Choose a move:\n";
+                for (size_t i = 0; i < activePlayer.moves.size(); ++i) {
+                    cout << i + 1 << ". " << activePlayer.moves[i].name
+                        << " (Type: " << activePlayer.moves[i].type << ", Pwr: " << activePlayer.moves[i].power << ")\n";
+                }
+                cout << "0. Cancel\n> ";
+
+                int moveChoice = 0;
+                if (!(cin >> moveChoice) || moveChoice < 0 || moveChoice > static_cast<int>(activePlayer.moves.size())) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Invalid input.\n";
+                    continue;
+                }
+                if (moveChoice == 0) continue; // Go back to action selection
+
+                playerMove = activePlayer.moves[moveChoice - 1];
+                validAction = true;
+            }
+            else if (action == 2) {
+                cout << "Choose a Pokemon to switch to:\n";
+                for (size_t i = 0; i < battleTeam.size(); ++i) {
+                    cout << i + 1 << ". " << battleTeam[i].name << " [HP: " << battleTeam[i].hp << "/" << battleTeam[i].maxHp << "]\n";
+                }
+                cout << "0. Cancel\n> ";
+
+                int switchChoice = 0;
+                if (!(cin >> switchChoice) || switchChoice < 0 || switchChoice > static_cast<int>(battleTeam.size())) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Invalid input.\n";
+                    continue;
+                }
+                if (switchChoice == 0) continue; // Cancel switch
+
+                int targetIdx = switchChoice - 1;
+                if (targetIdx == activeIdx) {
+                    cout << activePlayer.name << " is already in battle!\n";
+                    continue;
+                }
+                if (battleTeam[targetIdx].hp <= 0) {
+                    cout << battleTeam[targetIdx].name << " was killed and cannot battle anymore!\n";
+                    continue;
+                }
+
+                cout << "Come back " << activePlayer.name << "!\n";
+                activeIdx = targetIdx;
+                cout << "Go! " << battleTeam[activeIdx].name << "!\n";
+                playerSwitched = true;
+                validAction = true;
+            }
+        }
+
+        // We must re-reference currentPlayer in case activeIdx changed during switch
+        Pokemon& currentPlayer = battleTeam[activeIdx];
+
+        // 2. Enemy chooses random move
+        int enemyChoice = rand() % enemy.moves.size();
+        Move& enemyMove = enemy.moves[enemyChoice];
+
+        // 3. Execute Turn Logic
+        if (playerSwitched) {
+            // Player switched, enemy attacks the NEW pokemon
+            ExecuteTurn(enemy, currentPlayer, enemyMove);
+        }
+        else {
+            // Determine turn order based on Speed
+            bool playerFirst = currentPlayer.speed >= enemy.speed;
+
+            if (playerFirst) {
+                ExecuteTurn(currentPlayer, enemy, playerMove);
+                if (enemy.hp > 0) ExecuteTurn(enemy, currentPlayer, enemyMove);
+            }
+            else {
+                ExecuteTurn(enemy, currentPlayer, enemyMove);
+                if (currentPlayer.hp > 0) ExecuteTurn(currentPlayer, enemy, playerMove);
+            }
+        }
+
+        // 4. Force switch if current Pokemon fainted (and team is still alive)
+        if (currentPlayer.hp <= 0 && enemy.hp > 0 && IsTeamAlive()) {
+            cout << "\n" << currentPlayer.name << " fainted!\n";
+            bool validSwitch = false;
+            while (!validSwitch) {
+                cout << "Choose your next Pokemon:\n";
+                for (size_t i = 0; i < battleTeam.size(); ++i) {
+                    cout << i + 1 << ". " << battleTeam[i].name << " [HP: " << battleTeam[i].hp << "/" << battleTeam[i].maxHp << "]\n";
+                }
+                cout << "> ";
+                int switchChoice = 0;
+                if (!(cin >> switchChoice) || switchChoice < 1 || switchChoice > static_cast<int>(battleTeam.size())) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Invalid input.\n";
+                    continue;
+                }
+                int targetIdx = switchChoice - 1;
+                if (battleTeam[targetIdx].hp <= 0) {
+                    cout << battleTeam[targetIdx].name << " has no energy left to battle!\n";
+                    continue;
+                }
+                activeIdx = targetIdx;
+                cout << "Go! " << battleTeam[activeIdx].name << "!\n";
+                validSwitch = true;
+            }
+        }
+    }
+
+    // Battle Conclusion
+    cout << "\n============================================\n";
+    if (IsTeamAlive()) {
+        cout << enemy.name << " fainted!\n";
+        cout << "You win the battle!\n";
+        return true;
+    }
+    else {
+        cout << "All your Pokemon fainted!\n";
+        cout << "You white out...\n";
+        return false;
+    }
 }
 
 int main()
@@ -542,8 +755,137 @@ int main()
         starterName = "Bulbasaur";
         break;
     }
-
+	if (starterName == "bulbasaur") {
+		battleTeam.push_back(Pokemon("Bulbasaur", 45, 49, 49, 65, 65, 45, 5, "grass", { Tackle, Growl, LeechSeed, VineWhip }));
+	}
+	else if (starterName == "charmander") {
+		battleTeam.push_back(Pokemon("Charmander", 39, 52, 43, 60, 50, 65, 5, "fire", { Scratch, Growl, Ember, Flamethrower }));
+	}
+	else if (starterName == "squirtle") {
+		battleTeam.push_back(Pokemon("Squirtle", 44, 48, 65, 50, 64, 43, 5, "water", { Tackle, TailWhip, Bubble, WaterGun }));
+	}
+	else {
+		cout << "Invalid starter choice. Defaulting to Bulbasaur.\n";
+		battleTeam.push_back(Pokemon("Bulbasaur", 45, 49, 49, 65, 65, 45, 5, "grass", { Tackle, Growl, LeechSeed, VineWhip }));
+	}
+	// rival battle 1
+    battle(rivalteam);
+	generatepokemon(0);
+    battle(brockTeam);
+    generatepokemon(1);
+    battle(mistyTeam);
+    generatepokemon(2);
+    battle(rival2Team);
+    generatepokemon(3);
+    battle(ltSurgeTeam);
+    generatepokemon(4);
+    battle(erikaTeam);
+    generatepokemon(5);
+    battle(kogaTeam);
+    generatepokemon(6);
+    battle(rival3Team);
+    generatepokemon(7);
+    battle(sabrinaTeam);
+    generatepokemon(8);
+    battle(blaineTeam);
+    generatepokemon(9);
+    battle(rival4Team);
+    generatepokemon(10);
+    battle(giovanniTeam);
+    generatepokemon(11);
+    battle(loreleiTeam);
+    battle(brunoTeam);
+    battle(agathaTeam);
+    battle(lanceTeam);
+    battle(championTeam);
+	cont << "\nCongratulations on beating the game! Thanks for playing :D\n";
+    count << "6767676767676767676767667676767676767676767676767676741";
+	return 0;
 };
+
+float GetTypeMultiplier(const string& attackType, const string& defendType) {
+    if (attackType == defendType) return 0.5f; // Not very effective against own type
+
+    if (attackType == "fire") {
+        if (defendType == "grass" || defendType == "bug" || defendType == "ice") return 2.0f;
+        if (defendType == "water" || defendType == "rock") return 0.5f;
+    }
+    else if (attackType == "water") {
+        if (defendType == "fire" || defendType == "ground" || defendType == "rock") return 2.0f;
+        if (defendType == "grass" || defendType == "dragon") return 0.5f;
+    }
+    else if (attackType == "grass") {
+        if (defendType == "water" || defendType == "ground" || defendType == "rock") return 2.0f;
+        if (defendType == "fire" || defendType == "poison" || defendType == "flying" || defendType == "bug" || defendType == "dragon") return 0.5f;
+    }
+    else if (attackType == "electric") {
+        if (defendType == "water" || defendType == "flying") return 2.0f;
+        if (defendType == "ground") return 0.0f; // Immunity!
+        if (defendType == "grass") return 0.5f;
+    }
+    return 1.0f; // Default standard damage
+}
+
+void ExecuteTurn(Pokemon& attacker, Pokemon& defender, Move& move) {
+    cout << "\n> " << attacker.name << " used " << move.name << "!\n";
+
+    // Handle status/non-damaging moves safely
+    if (move.power == 0) {
+        cout << "  (It's a status move... It doesn't do damage right now.)\n";
+        return;
+    }
+
+    // Determine which stats to use (Physical vs Special)
+    float attackStat = move.special ? attacker.specialAttack : attacker.attack;
+    float defenseStat = move.special ? defender.specialDefense : defender.defense;
+
+    // Standard Pokémon Damage Formula
+    float baseDamage = (((2.0 * attacker.level / 5.0) + 2.0) * move.power * (attackStat / defenseStat) / 50.0) + 2.0;
+
+    // Same-Type Attack Bonus (STAB)
+    float stab = (move.type == attacker.type) ? 1.5f : 1.0f;
+
+    // Type Effectiveness
+    float typeMod = GetTypeMultiplier(move.type, defender.type);
+
+    // Calculate final damage
+    float finalDamageFloat = baseDamage * stab * typeMod;
+
+    // Apply slight random variance (85% to 100% damage)
+    float variance = (rand() % 16 + 85) / 100.0f;
+    finalDamageFloat *= variance;
+
+    int finalDamage = std::max(1, (int)finalDamageFloat); // Guarantee at least 1 damage
+
+    // Print effectiveness feedback
+    if (typeMod > 1.1f) cout << "  It's super effective!\n";
+    else if (typeMod < 0.9f && typeMod > 0.0f) cout << "  It's not very effective...\n";
+    else if (typeMod == 0.0f) {
+        cout << "  It had no effect!\n";
+        finalDamage = 0;
+    }
+
+    defender.hp -= finalDamage;
+    if (defender.hp < 0) defender.hp = 0; // Prevent negative HP display
+
+    if (finalDamage > 0) cout << "  " << defender.name << " took " << finalDamage << " damage!\n";
+}
+
+// Check if the player has any conscious Pokemon left
+bool IsTeamAlive() {
+    for (const auto& p : battleTeam) {
+        if (p.hp > 0) return true;
+    }
+    return false;
+}
+
+bool IsEnemyAlive() {
+    for (const auto& p : enemyTeam) {
+        if (p.hp > 0) return true;
+    }
+    return false;
+}
+
 int gyms_beaten = 0;
 
 void riddle1() {
