@@ -365,7 +365,7 @@ vector<Pokemon> battleTeam;
 void AddPokemonToCollection(const Pokemon& pokemon)
 {
     playerCollection.push_back(pokemon);
-}
+};
 
 // Function to add Pokémon to the battle team
 bool AddPokemonToBattleTeam(const Pokemon& pokemon)
@@ -379,7 +379,7 @@ bool AddPokemonToBattleTeam(const Pokemon& pokemon)
 
     battleTeam.push_back(pokemon);
     return true;
-}
+};
 
 // Function to display a Pokémon list
 void DisplayPokemon(const Pokemon& p) {
@@ -400,10 +400,10 @@ void DisplayPokemon(const Pokemon& p) {
         cout << "  " << i + 1 << ". " << m.name
             << " | Type: " << m.type
             << " | Power: " << m.power
-			<< " | " << (m.special ? "Special" : "Physical") << endl;
+            << " | " << (m.special ? "Special" : "Physical") << endl;
     }
     cout << "--------------" << endl;
-}
+};
 //need to add pokemon to collection and battle team
 void addpokemon(const Pokemon& pokemon)
 {
@@ -424,7 +424,7 @@ void display() {
         DisplayPokemon(p);
     }
     // No return 0 here because the function is void
-}
+};
 
 // lets player pick a pokemon to add to their team depending on gym level (0..n)
 void generatepokemon(int gym_level)
@@ -546,7 +546,7 @@ void generatepokemon(int gym_level)
 	else if (selectedName == "Snorlax") selectedPokemon = "Snorlax" , 160, 110, 65, 65, 110, 30, 20, "normal", { Tackle, Rest, BodySlam, HyperBeam };
 	else if (selectedName == "Gengar") selectedPokemon = "Gengar" , 60, 65, 60, 130, 75, 110, 20,"ghost", { Lick, Hypnosis, ShadowBall, DreamEater };
 	addpokemon(selectedPokemon);
-}
+};
 
 //player battles
 //need to make it so enemy can use all there pokemon and not just one
@@ -713,7 +713,7 @@ bool Battle(Pokemon& enemy) {
                 validSwitch = true;
             }
         }
-    }
+    };
 
     // Battle Conclusion
     cout << "\n============================================\n";
@@ -727,14 +727,14 @@ bool Battle(Pokemon& enemy) {
         cout << "You white out...\n";
         return false;
     }
-}
+};
 
 void HealTeam() {
     for (auto& p : battleTeam) {
         p.hp = p.maxHp;
     }
     cout << "\nYour team has been fully healed!\n";
-}
+};
 
 int main()
 {
@@ -854,7 +854,7 @@ float GetTypeMultiplier(const string& attackType, const string& defendType) {
         if (defendType == "grass") return 0.5f;
     }
     return 1.0f; // Default standard damage
-}
+};
 
 void ExecuteTurn(Pokemon& attacker, Pokemon& defender, Move& move) {
     cout << "\n> " << attacker.name << " used " << move.name << "!\n";
@@ -899,7 +899,7 @@ void ExecuteTurn(Pokemon& attacker, Pokemon& defender, Move& move) {
     if (defender.hp < 0) defender.hp = 0; // Prevent negative HP display
 
     if (finalDamage > 0) cout << "  " << defender.name << " took " << finalDamage << " damage!\n";
-}
+};
 
 // Check if the player has any conscious Pokemon left
 bool IsTeamAlive() {
@@ -907,14 +907,14 @@ bool IsTeamAlive() {
         if (p.hp > 0) return true;
     }
     return false;
-}
+};
 
 bool IsEnemyAlive() {
     for (const auto& p : enemyTeam) {
         if (p.hp > 0) return true;
     }
     return false;
-}
+};
 
 int gyms_beaten = 0;
 
@@ -1259,7 +1259,7 @@ void riddle8() {
 
 	};
 
-    void ShowMoves(const Pokemon & p)
+    void ShowMoves(const Pokemon& p)
     {
         cout << "\n" << p.name << "'s Moves:\n";
 
@@ -1272,53 +1272,54 @@ void riddle8() {
                 << " | Type: " << m.type
                 << " | Power: " << m.power
                 << " | " << (m.special ? "Special" : "Physical") << endl;
-                << endl;
+            << endl;
         }
-    }
+    };
 
-void UseMove(Pokemon& attacker,
-    Pokemon& defender,
-    int moveIndex)
-{
-    if (moveIndex < 0 ||
-        moveIndex >= attacker.moves.size())
+    void UseMove(Pokemon& attacker,
+        Pokemon& defender,
+        int moveIndex)
     {
-        cout << "Invalid move!\n";
-        return;
-    }
+        if (moveIndex < 0 ||
+            moveIndex >= attacker.moves.size())
+        {
+            cout << "Invalid move!\n";
+            return;
+        }
 
-    Move& move = attacker.moves[moveIndex];
+        Move& move = attacker.moves[moveIndex];
 
-    cout << attacker.name
-        << " used "
-        << move.name
-        << "!\n";
+        cout << attacker.name
+            << " used "
+            << move.name
+            << "!\n";
 
-    // Very simple damage formula
-    int damage =
-        (attacker.attack + move.power)
-        - defender.defense / 2;
+        // Very simple damage formula
+        int damage =
+            (attacker.attack + move.power)
+            - defender.defense / 2;
 
-    if (damage < 1)
-    {
-        damage = 1;
-    }
+        if (damage < 1)
+        {
+            damage = 1;
+        }
 
-    defender.hp -= damage;
+        defender.hp -= damage;
 
-    if (defender.hp < 0)
-    {
-        defender.hp = 0;
-    }
+        if (defender.hp < 0)
+        {
+            defender.hp = 0;
+        }
 
-    cout << defender.name
-        << " took "
-        << damage
-        << " damage!\n";
+        cout << defender.name
+            << " took "
+            << damage
+            << " damage!\n";
 
-    cout << defender.name
-        << " HP: "
-        << defender.hp
-        << "/"
-        << defender.maxHp
-        << endl;
+        cout << defender.name
+            << " HP: "
+            << defender.hp
+            << "/"
+            << defender.maxHp
+            << endl;
+    };
