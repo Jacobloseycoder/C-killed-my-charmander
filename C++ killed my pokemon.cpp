@@ -8,7 +8,7 @@
 #include <limits>
 using namespace std;
 
-struct Move
+struct move
 {
     string name;       // Move name
     string type;       // Fire, Water, Grass, etc.
@@ -16,7 +16,7 @@ struct Move
     bool special;      // true = special attack, false = physical
 };
 
-struct Pokemon
+struct pokemon
 {
     string name;
     int level;
@@ -28,7 +28,7 @@ struct Pokemon
     int specialDefense;
     int speed;
     string type;
-    vector<Move> moves;
+    vector<move> moves;
 };
 
 //all moves that will use special attack is marked as true, and all moves that will use physical attack is marked as false
@@ -1265,7 +1265,7 @@ void riddle8() {
 		{ "Alakazam", 50, 55, 55, 50, 45, 135, 95, 120, "psychic", {Psychic, CalmMind, Recover, ShadowBall} },
 		{ "Rhydon", 50, 80, 80, 85, 95, 30, 30, 25, "ground", {HornAttack, Stomp, RockBlast, Bulldoze} },
 		{ "Charizard", 50, 78, 78, 84, 78, 109, 85, 100, "fire", {Flamethrower, Fly, DragonClaw, Slash} },
-		{ "Arcanine", 50, 90, 90, 110, 80, 100, 80, 95, "fire", {Flamethrower, ExtremeSpeed, Crunch， FireBlast} },
+		{ "Arcanine", 50, 90, 90, 110, 80, 100, 80, 95, "fire", {Flamethrower, ExtremeSpeed, Crunch, FireBlast} },
 		{ "Exeggutor", 50, 95, 95, 95, 85, 55, 45, 55, "grass", {Psychic, GigaDrain, SleepPowder, SolarBeam} }
 
 	};
