@@ -8,6 +8,14 @@
 #include <limits>
 using namespace std;
 
+struct Move
+{
+    string name;       // Move name
+    string type;       // Fire, Water, Grass, etc.
+    int power;         // Damage amount
+    bool special;      // true = special attack, false = physical
+};
+
 struct Pokemon
 {
     string name;
@@ -22,238 +30,6 @@ struct Pokemon
     string type;
     vector<Move> moves;
 };
-
-
-// Stores ALL Pokémon the player owns
-vector<Pokemon> playerCollection;
-
-// Stores the 6 Pokémon currently used for battles
-vector<Pokemon> battleTeam;
-
-// Function to add Pokémon to the player's collection
-void AddPokemonToCollection(const Pokemon& pokemon)
-{
-    playerCollection.push_back(pokemon);
-}
-
-// Function to add Pokémon to the battle team
-bool AddPokemonToBattleTeam(const Pokemon& pokemon)
-{
-    // Team limit = 6
-    if (battleTeam.size() >= 6)
-    {
-        cout << "Battle team is full!\n";
-        return false;
-    }
-
-    battleTeam.push_back(pokemon);
-    return true;
-}
-
-// Function to display a Pokémon list
-void DisplayPokemon(const Pokemon& p) {
-    // Header with stats
-    cout << p.name << " | Level: " << p.level
-        << " | HP: " << p.maxHp
-        << " | ATK: " << p.attack
-        << " | DEF: " << p.defense
-        << " | SPA: " << p.specialAttack
-        << " | SPD: " << p.specialDefense
-        << " | SPE: " << p.speed
-        << " | Type: " << p.type << endl;
-
-    // Detailed Move List
-    cout << "Moves List:" << endl;
-    for (int i = 0; i < p.moves.size(); i++) {
-        const Move& m = p.moves[i];
-        cout << "  " << i + 1 << ". " << m.name
-            << " | Type: " << m.type
-            << " | Power: " << m.power
-			<< " | " << (m.special ? "Special" : "Physical") << endl;
-    }
-    cout << "--------------" << endl;
-}
-//need to add pokemon to collection and battle team
-void addpokemon(const Pokemon& pokemon)
-{
-    // Add to collection
-    AddPokemonToCollection(pokemon);
-    // Add to battle team
-    AddPokemonToBattleTeam(pokemon);
-};
-
-void display() {
-    cout << "\n=== Player Collection ===\n";
-    for (const auto& p : playerCollection) {
-        DisplayPokemon(p);
-    }
-
-    cout << "\n=== Battle Team ===\n";
-    for (const auto& p : battleTeam) {
-        DisplayPokemon(p);
-    }
-    // No return 0 here because the function is void
-}
-
-struct Move
-{
-    string name;       // Move name
-    string type;       // Fire, Water, Grass, etc.
-    int power;         // Damage amount
-    bool special;      // true = special attack, false = physical
-};
-
-
-pokemon Bulbasaur = { "Bulbasaur", 5,45,45,49,60,60,45, "grass",{VineWhip,Tackle,LeechSeed,Growl}};
-pokemon Ivysaur = { "Ivysaur", 16,60,60,61,80,80,60, "grass",{RazorLeaf,SleepPowder,PoisonPowder}};
-pokemon Venusaur = { "Venusaur", 32,80,80,81,100,100,80, "grass",{SolarBeam,RazorLeaf,SleepPowder,SludgeBomb}};
-pokemon Charmander = { "Charmander", 5,39,39,51,45,45,39, "fire",{Ember,Scratch,Smokescreen,MetalClaw}};
-pokemon Charmeleon = { "Charmeleon", 16,58,58,64,72,72,64, "fire",{Flamethrower,Ember Slash,Smokescreen}};
-pokemon Charizard = { "Charizard", 36,78,78,84,109,109,85, "fire",{Flamethrower,Fly,DragonClaw,Slash}};
-pokemon Squirtle = { "Squirtle", 44,48,44,48,50,50,45, "water",{WaterGun,Tackle,TailWhip,Bubble}};
-pokemon Wartortle = { "Wartortle", 59,63,63,63,83,83,58, "water",{WaterGun,Bite,RapidSpin,Withdraw}};
-pokemon Blastoise = { "Blastoise", 36,79,83,85,100,100,80, "water",{HydroPump,Surf,IceBeam,Bite}};
-pokemon Caterpie = { "Caterpie", 45,30,35,20,20,20,45, "bug",{Tackle,StringShot,BugBite,Snore}};
-pokemon Metapod = { "Metapod", 50,10,55,30,30,30,30, "bug",{Harden,Tackle,StringShot,BugBite}};
-pokemon Butterfree = { "Butterfree", 60,45,55,90,90,75,70, "bug",{Confusion,SleepPowder,Gust,Psychic}};
-pokemon Weedle = { "Weedle", 40,35,45,20,20,20,50, "bug",{PoisonSting,StringShot,BugBite,Tackle}};
-pokemon Kakuna = { "Kakuna", 45,15,45,25,25,25,30, "bug",{Harden,PoisonSting,StringShot,BugBite}};
-pokemon Beedrill = { "Beedrill", 65,90,80,90,90,75,70, "bug",{Twineedle,FuryAttack,PoisonJab,DrillRun}};
-pokemon Pidgey = { "Pidgey", 40,45,40,45,40,40,45, "flying",{Gust,Tackle,SandAttack,QuickAttack}};
-pokemon Pidgeotto = { "Pidgeotto", 63,60,63,60,63,63,58, "flying",{WingAttack,QuickAttack,Whirlwind,Gust}};
-pokemon Pidgeot = { "Pidgeot", 83,80,83,80,83,83,79, "flying",{WingAttack,Fly,QuickAttack,Hurricane}};
-pokemon Rattata = {"Rattata", 30,56,35,25,25, 35,72, "normal",{Tackle,QuickAttack,HyperFang,FocusEnergy}};
-pokemon Raticate = {"Raticate", 55,81,60,50,50,70,97, "normal",{Crunch,HyperFang,QuickAttack,SwordsDance}};
-pokemon Spearow = {"Spearow", 40,60,40,30,30,30,45, "flying",{Peck,Growl,FuryAttack,Leer}};
-pokemon Fearow = {"Fearow", 65,90,65,65,90,65,79, "flying",{DrillPeck,FuryAttack,Agility,Leer}};
-pokemon Ekans = { "Ekans", 35,60,44,40,40,40,55, "poison",{Wrap,Bite,PoisonSting,Glare}};
-pokemon Arbok = {"Arbok", 60,85,69,70,85,79,82, "poison",{Crunch,PoisonFang,Glare,Screech}};
-pokemon Pikachu = {"Pikachu", 35,55,40,50,50,50,90, "electric",{Thunderbolt,QuickAttack,ThunderWave,IronTail}};
-pokemon Raichu = {"Raichu", 60,90,55,90,90,80,110, "electric",{Thunderbolt,QuickAttack,ThunderWave,IronTail}};
-pokemon Sandshrew = {"Sandshrew", 50,75,85,20,20,20,40, "ground",{Dig,Slash,SandAttack,DefenseCurl}};
-pokemon Sandslash = {"Sandslash", 75,100,120,45,45,45,65, "ground",{Earthquake,Slash,RockSlide,SwordsDance} };
-pokemon NidoranF = {"NidoranF", 55,47,40,40,40,40,55, "poison",{PoisonSting,Scratch,TailWhip,DoubleKick} };
-pokemon Nidorina = {"Nidorina", 70,61,61,61,61,61,79, "poison",{PoisonSting,Bite,DoubleKick.HelpingHand} };
-pokemon NidoranM = {"NidoranM", 46, 57, 40, 40, 40, 50, 10, "poison", {Peck, DoubleKick, Leer, PoisonSting} };
-pokemon Nidorino = { "Nidorino", 61, 71, 57, 55, 55, 65, 16, "poison", {PoisonJab, DoubleKick, hornAttack, furryattack} };
-pokemon Nidoking = { "Nidoking", 81, 101, 77, 85, 75, 85, 36, "poison", {Earthquake, SludgeBomb, Megahorn, IceBeam}};
-pokemon Clefairy = { "Clefairy", 70, 45, 48, 60, 65, 35, 10, "fairy", {Sing, DoubleSlap, Metronome, Moonlight}};
-pokemon Clefable = { "Clefable", 95, 70, 73, 95, 90, 60, 36, "fairy", {Moonblast, Flamethrower, Thunderbolt, SoftBoiled}};
-pokemon Vulpix = { "Vulpix", 38, 41, 40, 50, 65, 65, 10, "fire", {Ember, QuickAttack, ConfuseRay, WillOWisp} };
-pokemon Ninetales = { "Ninetales", 73, 76, 75, 81, 100, 100, 36, "fire", {Flamethrower, FireBlast, ConfuseRay, NastyPlot} };
-pokemon Jigglypuff = { "Jigglypuff", 115, 45, 20, 45, 25, 20, 10, "normal", {Sing, Pound, Rollout, DefenseCurl} };
-pokemon Wigglytuff = { "Wigglytuff", 140, 70, 45, 85, 50, 45, 36, "normal", {BodySlam, PlayRough, ShadowBall, Thunderbolt} };
-pokemon Zubat = { "Zubat", 40, 45, 35, 30, 40, 55, 10, "poison", {Bite, WingAttack, ConfuseRay, Supersonic} };
-pokemon Golbat = { "Golbat", 75, 80, 70, 65, 75, 90, 22, "poison", {Bite, WingAttack, ConfuseRay, AirCutter} };
-pokemon Oddish = { "Oddish", 45, 50, 55, 75, 65, 30, 10, "grass", {Absorb, SleepPowder, PoisonPowder, StunSpore} };
-pokemon Gloom = { "Gloom", 60, 65, 70, 85, 75, 40, 21, "grass", {MegaDrain, SleepPowder, PoisonPowder, Acid} };
-pokemon Vileplume = { "Vileplume", 75, 80, 85, 110, 90, 50, 36, "grass", {SolarBeam, GigaDrain, SleepPowder, SludgeBomb} };
-pokemon Paras = { "Paras", 35, 70, 55, 45, 55, 25, 10, "bug", {Scratch, LeechLife, Spore, StunSpore} };
-pokemon Parasect = { "Parasect", 60, 95, 80, 60, 80, 30, 24, "bug", {Slash, Spore, GigaDrain, XScissor} };
-pokemon Venonat = { "Venonat", 60, 55, 50, 40, 55, 45, 10, "bug", {Confusion, Psybeam, StunSpore, Supersonic} };
-pokemon Venomoth = { "Venomoth", 70, 65, 60, 90, 75, 90, 31, "bug", {Psychic, BugBuzz, SleepPowder, QuiverDance} };
-pokemon Diglett = { "Diglett", 10, 55, 25, 35, 45, 95, 10, "ground", {Dig, Magnitude, SandAttack, RockTomb} };
-pokemon Dugtrio = { "Dugtrio", 35, 100, 50, 50, 70, 120, 26, "ground", {Earthquake, RockSlide, Sandstorm, SuckerPunch} };
-pokemon Meowth = { "Meowth", 40, 45, 35, 40, 40, 90, 10, "normal", {Scratch, Bite, PayDay, Screech} };
-pokemon Persian = { "Persian", 65, 70, 60, 65, 65, 115, 28, "normal", {Slash, Bite, Swift, Screech} };
-pokemon Psyduck = { "Psyduck", 50, 51, 48, 65, 50, 50, 10, "water", {WaterGun, Confusion, Disable, Screech} };
-pokemon Golduck = { "Golduck", 80, 81, 78, 95, 80, 85, 33, "water", {Surf, Psychic, IceBeam, CalmMind} };
-pokemon Mankey = { "Mankey", 40, 80, 35, 35, 45, 70, 10, "fighting", {KarateChop, LowKick, FocusEnergy, SeismicToss} };
-pokemon Primeape = { "Primeape", 65, 105, 60, 60, 70, 95, 28, "fighting", {CloseCombat, RockSlide, UTurn, FocusEnergy} };
-pokemon Growlithe = { "Growlithe", 55, 70, 45, 70, 50, 60, 10, "fire", {Ember, Bite, Roar, FlameWheel} };
-pokemon Arcanine = { "Arcanine", 90, 110, 80, 100, 80, 95, 36, "fire", {Flamethrower, ExtremeSpeed, Crunch, FireBlast} };
-pokemon Poliwag = { "Poliwag", 40, 50, 40, 40, 40, 90, 10, "water", {Bubble, WaterGun, Hypnosis, DoubleSlap} };
-pokemon Poliwhirl = { "Poliwhirl", 65, 65, 65, 50, 50, 90, 25, "water", {WaterGun, Hypnosis, BodySlam, MudShot} };
-pokemon Poliwrath = { "Poliwrath", 90, 95, 95, 70, 90, 70, 36, "water", {Surf, DynamicPunch, IcePunch, BulkUp} };
-pokemon Abra = { "Abra", 15, 10, 15, 105, 55, 90, 10, "psychic", {Teleport, Confusion, Psychic， Reflect} };
-pokemon Kadabra = { "Kadabra", 40, 35, 30, 120, 70, 105, 16, "psychic", {Psychic, Confusion, Recover, Disable} };
-pokemon Alakazam = { "Alakazam", 55, 50, 45, 135, 95, 120, 36, "psychic", {Psychic, CalmMind, Recover, ShadowBall} };
-pokemon Machop = { "Machop", 70, 80, 50, 35, 35, 35, 10, "fighting", {KarateChop, LowKick, FocusEnergy, BulkUp} };
-pokemon Machoke = { "Machoke", 80, 100, 70, 50, 60, 45, 28, "fighting", {CrossChop, Submission, BulkUp, RockSlide} };
-pokemon Machamp = { "Machamp", 90, 130, 80, 65, 85, 55, 36, "fighting", {DynamicPunch, CrossChop, BulkUp, StoneEdge} };
-pokemon Bellsprout = { "Bellsprout", 50, 75, 35, 70, 30, 40, 10, "grass", {VineWhip, Growth, SleepPowder, Acid} };
-pokemon Weepinbell = { "Weepinbell", 65, 90, 50, 85, 45, 55, 21, "grass", {RazorLeaf, SleepPowder, Acid, Slam} };
-pokemon Victreebel = { "Victreebel", 80, 105, 65, 100, 70, 70, 36, "grass", {SolarBeam, SludgeBomb, SleepPowder, RazorLeaf} };
-pokemon Tentacool = { "Tentacool", 40, 40, 35, 50, 100, 70, 10, "water", {PoisonSting, BubbleBeam, Supersonic, Acid} };
-pokemon Tentacruel = { "Tentacruel", 80, 70, 65, 80, 120, 100, 30, "water", {Surf, SludgeBomb, IceBeam, Barrier} };
-pokemon Geodude = { "Geodude", 40, 80, 100, 30, 30, 20, 10, "rock", {RockThrow, Magnitude, DefenseCurl, Rollout} };
-pokemon Graveler = { "Graveler", 55, 95, 115, 45, 45, 35, 25, "rock", {RockSlide, Magnitude, SelfDestruct, Earthquake} };
-pokemon Golem = { "Golem", 80, 110, 130, 55, 65, 45, 36, "rock", {Earthquake, StoneEdge, Explosion, RockBlast} };
-pokemon Ponyta = { "Ponyta", 50, 85, 55, 65, 65, 90, 10, "fire", {Ember, Stomp, FireSpin, FlameWheel} };
-pokemon Rapidash = { "Rapidash", 65, 100, 70, 80, 80, 105, 40，"fire"，{Flamethrower，Megahorn，Agility，FireSpin} };
-pokemon Slowpoke = { "Slowpoke", 90, 65, 65, 40, 40, 15, 10, "water", {WaterGun, Confusion, Yawn, SlackOff} };
-pokemon Slowbro = { "Slowbro",  95, 75, 110, 100, 80, 30, 37, "water", {Surf, Psychic, SlackOff, Amnesia} };
-pokemon Magnemite = { "Magnemite",  15, 35, 70, 95, 55, 45, 10, "electric", {ThunderShock, SonicBoom, ThunderWave, Spark} };
-pokemon Magneton = { "Magneton",  50, 60, 95, 120, 70, 70, 30, "electric", {Thunderbolt, ThunderWave, FlashCannon, TriAttack} };
-pokemon Farfetchd = { "Farfetchd",  51, 65, 55, 58, 62, 60, 10, "normal", {Peck, Slash, FuryCutter, SwordsDance} };
-pokemon Doduo = { "Doduo",  35, 85, 45, 35, 35, 75, 10, "normal", {Peck, FuryAttack, QuickAttack, TriAttack} };
-pokemon Dodrio = { "Dodrio",  60, 110, 70, 60, 60, 110, 31, "normal", {DrillPeck, TriAttack, Agility, JumpKick} };
-pokemon Seel = { "Seel",  65, 45, 55, 45, 70, 45, 10, "water", {Headbutt, IceShard, Rest, AuroraBeam} };
-pokemon Dewgong = { "Dewgong",  90, 70, 80, 70, 95, 70, 34, "water", {IceBeam, Surf, AuroraBeam, Rest} };
-pokemon Grimer = { "Grimer",  80, 80, 50, 40, 50, 25, 10, "poison", {Sludge, PoisonGas, Minimize, MudSlap} };
-pokemon Muk = { "Muk",  105, 105, 75, 65, 100, 50, 38, "poison", {SludgeBomb, Minimize, Curse, Toxic} };
-pokemon Shellder = { "Shellder",  30, 65, 100, 45, 25, 40, 10, "water", {Tackle, IceShard, Clamp, Supersonic} };
-pokemon Cloyster = { "Cloyster",  50, 95, 180, 85, 45, 70, 36, "water", {IceBeam, Surf, Spikes, ShellSmash} };
-pokemon Gastly = { "Gastly",  30, 35, 30, 100, 35, 80, 10, "ghost", {Lick, Hypnosis, NightShade, ConfuseRay} };
-pokemon Haunter = { "Haunter",  45, 50, 45, 115, 55, 95, 25, "ghost", {ShadowBall, Hypnosis, Curse, ConfuseRay} };
-pokemon Gengar = { "Gengar",  60, 65, 60, 130, 75, 110, 36, "ghost", {ShadowBall, SludgeBomb, Hypnosis, Thunderbolt} };
-pokemon Onix = { "Onix",  35, 45, 160, 30, 45, 70, 10, "rock", {RockThrow, Bind, RockTomb, Sandstorm} };
-pokemon Drowzee = { "Drowzee",  60, 48, 45, 43, 90, 42, 10, "psychic", {Confusion, Hypnosis, Headbutt, Psybeam} };
-pokemon Hypno = { "Hypno",  85, 73, 70, 73, 115, 67, 26, "psychic", {Psychic, Hypnosis, DreamEater, CalmMind} };
-pokemon Krabby = { "Krabby",  30, 105, 90, 25, 25, 50, 10, "water", {Bubble, Crabhammer, ViceGrip, Stomp} };
-pokemon Kingler = { "Kingler",  55, 130, 115, 50, 50, 75, 28, "water", {Crabhammer, XScissor, SwordsDance, Stomp} };
-pokemon Voltorb = { "Voltorb",  40, 30, 50, 55, 55, 100, 10, "electric", {Spark, SonicBoom, SelfDestruct, LightScreen} };
-pokemon Electrode = { "Electrode",  60, 50, 70, 80, 80, 150, 30, "electric", {Thunderbolt, Explosion, LightScreen, Reflect} };
-pokemon Exeggcute = { "Exeggcute",  60, 40, 80, 60, 45, 40, 10, "grass", {Confusion, SleepPowder, LeechSeed, Reflect} };
-pokemon Exeggutor = { "Exeggutor",  95, 95, 85, 125, 75, 55, 36, "grass", {Psychic, SolarBeam, SleepPowder, Explosion} };
-pokemon Cubone = { "Cubone",  50, 50, 95, 40, 50, 35, 10, "ground", {BoneClub, Headbutt, FocusEnergy, Bonemerang} };
-pokemon Marowak = { "Marowak",  60, 80, 110, 50, 80, 45, 28, "ground", {Bonemerang, Earthquake, SwordsDance, RockSlide} };
-pokemon Hitmonlee = { "Hitmonlee",  50, 110, 53, 35, 110, 87, 20, "fighting", {HighJumpKick, MegaKick, BlazeKick, FocusEnergy} };
-pokemon Hitmonchan = { "Hitmonchan",  50, 105, 79, 35, 110, 76, 20, "fighting", {FirePunch, IcePunch, ThunderPunch, MachPunch} };
-pokemon Lickitung = { "Lickitung",  90, 55, 75, 60, 75, 30, 10, "normal", {Lick, Slam, Disable, BodySlam} };
-pokemon Koffing = { "Koffing",  40, 65, 95, 60, 45, 35, 10, "poison", {Smog, Sludge, SelfDestruct, Toxic} };
-pokemon Weezing = { "Weezing",  65, 90, 120, 85, 70, 60, 35, "poison", {SludgeBomb, Explosion, Toxic, Flamethrower} };
-pokemon Rhyhorn = { "Rhyhorn",  80, 85, 95, 30, 30, 25, 10, "ground", {HornAttack, Stomp, RockBlast, Bulldoze} };
-pokemon Rhydon = { "Rhydon",  105, 130, 120, 45, 45, 40, 42, "ground", {Earthquake, Megahorn, StoneEdge, RockSlide} };
-pokemon Chansey = { "Chansey",  150, 5, 5, 35, 105, 50, 10, "normal", {SoftBoiled, SeismicToss, ThunderWave, Toxic} };
-pokemon Tangela = { "Tangela",  65, 55, 115, 100, 40, 60, 10, "grass", {VineWhip, SleepPowder, StunSpore, GigaDrain} };
-pokemon Kangaskhan = { "Kangaskhan",  105, 95, 80, 40, 80, 90, 10, "normal", {MegaPunch, Crunch, Earthquake, FakeOut} };
-pokemon Horsea = { "Horsea",  30, 40, 70, 70, 25, 60, 10, "water", {Bubble, Smokescreen, Twister, WaterPulse} };
-pokemon Seadra = { "Seadra",  55, 65, 95, 95, 45, 85, 32, "water", {Surf, DragonBreath, Agility, IceBeam} };
-pokemon Goldeen = { "Goldeen",  45, 67, 60, 35, 50, 63, 10, "water", {Peck, HornAttack, WaterPulse, Agility} };
-pokemon Seaking = { "Seaking",  80, 91, 65, 65, 80, 68, 33, "water", {Waterfall, Megahorn, HornDrill, AquaTail} };
-pokemon Staryu = { "Staryu",  30, 45, 55, 70, 55, 85, 10, "water", {WaterGun, RapidSpin, Recover, Swift} };
-pokemon Starmie = { "Starmie",  60, 75, 85, 100, 85, 115, 36, "water", {Surf, Psychic, Thunderbolt, Recover} };
-pokemon MrMime = { "MrMime",  40, 45, 65, 100, 120, 90, 10, "psychic", {Psychic, Barrier, Reflect, LightScreen} };
-pokemon Scyther = { "Scyther",  70, 110, 80, 55, 80, 105, 10, "bug", {Slash, WingAttack, SwordsDance, XScissor} };
-pokemon Jynx = { "Jynx",  65, 50, 35, 115, 95, 95, 10, "ice", {IceBeam, Psychic, LovelyKiss, Blizzard} };
-pokemon Electabuzz = { "Electabuzz",  65, 83, 57, 95, 85, 105, 10, "electric", {ThunderPunch, Thunderbolt, LightScreen, Psychic} };
-pokemon Magmar = { "Magmar",  65, 95, 57, 100, 85, 93, 10, "fire", {Flamethrower, FirePunch, ConfuseRay, SunnyDay} };
-pokemon Pinsir = { "Pinsir",  65, 115, 100, 55, 70, 85, 10, "bug", {XScissor, SwordsDance, ViceGrip, RockSlide} };
-pokemon Tauros = { "Tauros",  75, 100, 95, 40, 70, 110, 10, "normal", {BodySlam, Earthquake, Thrash, ZenHeadbutt} };
-pokemon Magikarp = { "Magikarp",  10, 10, 55, 15, 20, 80, 5, "water", {Splash, Tackle, Flail, Bounce} };
-pokemon Gyarados = { "Gyarados",  95, 115, 79, 60, 100, 81, 20, "water", {Waterfall, Crunch, DragonDance, IceFang} };
-pokemon Lapras = { "Lapras",  130, 85, 80, 85, 95, 60, 10, "water", {Surf, IceBeam, Thunderbolt, ConfuseRay} };
-pokemon Ditto = { "Ditto",  48, 48, 48, 48, 48, 48, 10, "normal", {Transform, Rest, SleepTalk, Substitute} };
-pokemon Eevee = { "Eevee",  55, 55, 50, 45, 65, 55, 10, "normal", {QuickAttack, Bite, SandAttack, Swift} };
-pokemon Vaporeon = { "Vaporeon",  130, 65, 60, 110, 95, 65, 36, "water", {Surf, IceBeam, AuroraBeam, Wish} };
-pokemon Jolteon = { "Jolteon",  65, 65, 60, 110, 95, 130, 36, "electric", {Thunderbolt, ThunderWave, DoubleKick, Agility} };
-pokemon Flareon = { "Flareon",  65, 130, 60, 95, 110, 65, 36, "fire", {Flamethrower, FireBlast, QuickAttack, Bite} };
-pokemon Porygon = { "Porygon",  65, 60, 70, 85, 75, 40, 10, "normal", {TriAttack, Recover, Thunderbolt, IceBeam} };
-pokemon Omanyte = { "Omanyte",  35, 40, 100, 90, 55, 35, 10, "rock", {WaterGun, RockThrow, AncientPower, Bite} };
-pokemon Omastar = { "Omastar",  70, 60, 125, 115, 70, 55, 40, "rock", {Surf, RockSlide, AncientPower, IceBeam} };
-pokemon Kabuto = { "Kabuto",  30, 80, 90, 55, 45, 55, 10, "rock", {Scratch, AquaJet, AncientPower, MudShot} };
-pokemon Kabutops = { "Kabutops",  60, 115, 105, 65, 70, 80, 40, "rock", {Slash, Waterfall, AncientPower, SwordsDance} };
-pokemon Aerodactyl = { "Aerodactyl",  80, 105, 65, 60, 75, 130, 10, "rock", {RockSlide, WingAttack, Crunch, Fly} };
-pokemon Snorlax = { "Snorlax",  160, 110, 65, 65, 110, 30, 10, "normal", {BodySlam, Rest, SleepTalk, Earthquake} };
-pokemon Articuno = { "Articuno",  90, 85, 100, 95, 125, 85, 50, "ice", {IceBeam, Fly, Reflect, Agility} };
-pokemon Zapdos = { "Zapdos",  90, 90, 85, 125, 90, 100, 50, "electric", {Thunderbolt, DrillPeck, Agility, LightScreen} };
-pokemon Moltres = { "Moltres",  90, 100, 90, 125, 85, 90, 50, "fire", {Flamethrower, Fly, SunnyDay, FireBlast} };
-pokemon Dratini = { "Dratini",  41, 64, 45, 50, 50, 50, 10, "dragon", {DragonBreath, ThunderWave, Slam، Agility} };
-pokemon Dragonair = { "Dragonair",  61, 84, 65,70,70,70,30,"dragon",{DragonBreath,Surf,ThunderWave,Agility} };
-pokemon Dragonite = { "Dragonite",  91, 134, 95, 100, 100, 80, 55, "dragon", {DragonClaw, Fly, Thunderbolt, IceBeam} };
-pokemon Mewtwo = { "Mewtwo",  106, 110, 90, 154, 90, 130, 70, "psychic", {Psychic, CalmMind, Recover, IceBeam} };
-pokemon Mew = { "Mew",  100, 100, 100, 100, 100, 100, 50, "psychic", {Psychic, Transform, Metronome, SoftBoiled} };
 
 //all moves that will use special attack is marked as true, and all moves that will use physical attack is marked as false
 move Absorb = { "Absorb", "grass", 20, true };
@@ -427,6 +203,228 @@ move Withdraw = { "Withdraw", "water", 50, true };
 move XScissor = { "XScissor", "bug", 40, false };
 move Yawn = { "Yawn", "normal", 20, true };
 move ZenHeadbutt = { "ZenHeadbutt", "psychic", 80, false };
+
+pokemon Bulbasaur = { "Bulbasaur", 5,45,45,49,60,60,45, "grass",{VineWhip,Tackle,LeechSeed,Growl} };
+pokemon Ivysaur = { "Ivysaur", 16,60,60,61,80,80,60, "grass",{RazorLeaf,SleepPowder,PoisonPowder} };
+pokemon Venusaur = { "Venusaur", 32,80,80,81,100,100,80, "grass",{SolarBeam,RazorLeaf,SleepPowder,SludgeBomb} };
+pokemon Charmander = { "Charmander", 5,39,39,51,45,45,39, "fire",{Ember,Scratch,Smokescreen,MetalClaw} };
+pokemon Charmeleon = { "Charmeleon", 16,58,58,64,72,72,64, "fire",{Flamethrower,Ember Slash,Smokescreen} };
+pokemon Charizard = { "Charizard", 36,78,78,84,109,109,85, "fire",{Flamethrower,Fly,DragonClaw,Slash} };
+pokemon Squirtle = { "Squirtle", 44,48,44,48,50,50,45, "water",{WaterGun,Tackle,TailWhip,Bubble} };
+pokemon Wartortle = { "Wartortle", 59,63,63,63,83,83,58, "water",{WaterGun,Bite,RapidSpin,Withdraw} };
+pokemon Blastoise = { "Blastoise", 36,79,83,85,100,100,80, "water",{HydroPump,Surf,IceBeam,Bite} };
+pokemon Caterpie = { "Caterpie", 45,30,35,20,20,20,45, "bug",{Tackle,StringShot,BugBite,Snore} };
+pokemon Metapod = { "Metapod", 50,10,55,30,30,30,30, "bug",{Harden,Tackle,StringShot,BugBite} };
+pokemon Butterfree = { "Butterfree", 60,45,55,90,90,75,70, "bug",{Confusion,SleepPowder,Gust,Psychic} };
+pokemon Weedle = { "Weedle", 40,35,45,20,20,20,50, "bug",{PoisonSting,StringShot,BugBite,Tackle} };
+pokemon Kakuna = { "Kakuna", 45,15,45,25,25,25,30, "bug",{Harden,PoisonSting,StringShot,BugBite} };
+pokemon Beedrill = { "Beedrill", 65,90,80,90,90,75,70, "bug",{Twineedle,FuryAttack,PoisonJab,DrillRun} };
+pokemon Pidgey = { "Pidgey", 40,45,40,45,40,40,45, "flying",{Gust,Tackle,SandAttack,QuickAttack} };
+pokemon Pidgeotto = { "Pidgeotto", 63,60,63,60,63,63,58, "flying",{WingAttack,QuickAttack,Whirlwind,Gust} };
+pokemon Pidgeot = { "Pidgeot", 83,80,83,80,83,83,79, "flying",{WingAttack,Fly,QuickAttack,Hurricane} };
+pokemon Rattata = { "Rattata", 30,56,35,25,25, 35,72, "normal",{Tackle,QuickAttack,HyperFang,FocusEnergy} };
+pokemon Raticate = { "Raticate", 55,81,60,50,50,70,97, "normal",{Crunch,HyperFang,QuickAttack,SwordsDance} };
+pokemon Spearow = { "Spearow", 40,60,40,30,30,30,45, "flying",{Peck,Growl,FuryAttack,Leer} };
+pokemon Fearow = { "Fearow", 65,90,65,65,90,65,79, "flying",{DrillPeck,FuryAttack,Agility,Leer} };
+pokemon Ekans = { "Ekans", 35,60,44,40,40,40,55, "poison",{Wrap,Bite,PoisonSting,Glare} };
+pokemon Arbok = { "Arbok", 60,85,69,70,85,79,82, "poison",{Crunch,PoisonFang,Glare,Screech} };
+pokemon Pikachu = { "Pikachu", 35,55,40,50,50,50,90, "electric",{Thunderbolt,QuickAttack,ThunderWave,IronTail} };
+pokemon Raichu = { "Raichu", 60,90,55,90,90,80,110, "electric",{Thunderbolt,QuickAttack,ThunderWave,IronTail} };
+pokemon Sandshrew = { "Sandshrew", 50,75,85,20,20,20,40, "ground",{Dig,Slash,SandAttack,DefenseCurl} };
+pokemon Sandslash = { "Sandslash", 75,100,120,45,45,45,65, "ground",{Earthquake,Slash,RockSlide,SwordsDance} };
+pokemon NidoranF = { "NidoranF", 55,47,40,40,40,40,55, "poison",{PoisonSting,Scratch,TailWhip,DoubleKick} };
+pokemon Nidorina = { "Nidorina", 70,61,61,61,61,61,79, "poison",{PoisonSting,Bite,DoubleKick.HelpingHand} };
+pokemon NidoranM = { "NidoranM", 46, 57, 40, 40, 40, 50, 10, "poison", {Peck, DoubleKick, Leer, PoisonSting} };
+pokemon Nidorino = { "Nidorino", 61, 71, 57, 55, 55, 65, 16, "poison", {PoisonJab, DoubleKick, hornAttack, furryattack} };
+pokemon Nidoking = { "Nidoking", 81, 101, 77, 85, 75, 85, 36, "poison", {Earthquake, SludgeBomb, Megahorn, IceBeam} };
+pokemon Clefairy = { "Clefairy", 70, 45, 48, 60, 65, 35, 10, "fairy", {Sing, DoubleSlap, Metronome, Moonlight} };
+pokemon Clefable = { "Clefable", 95, 70, 73, 95, 90, 60, 36, "fairy", {Moonblast, Flamethrower, Thunderbolt, SoftBoiled} };
+pokemon Vulpix = { "Vulpix", 38, 41, 40, 50, 65, 65, 10, "fire", {Ember, QuickAttack, ConfuseRay, WillOWisp} };
+pokemon Ninetales = { "Ninetales", 73, 76, 75, 81, 100, 100, 36, "fire", {Flamethrower, FireBlast, ConfuseRay, NastyPlot} };
+pokemon Jigglypuff = { "Jigglypuff", 115, 45, 20, 45, 25, 20, 10, "normal", {Sing, Pound, Rollout, DefenseCurl} };
+pokemon Wigglytuff = { "Wigglytuff", 140, 70, 45, 85, 50, 45, 36, "normal", {BodySlam, PlayRough, ShadowBall, Thunderbolt} };
+pokemon Zubat = { "Zubat", 40, 45, 35, 30, 40, 55, 10, "poison", {Bite, WingAttack, ConfuseRay, Supersonic} };
+pokemon Golbat = { "Golbat", 75, 80, 70, 65, 75, 90, 22, "poison", {Bite, WingAttack, ConfuseRay, AirCutter} };
+pokemon Oddish = { "Oddish", 45, 50, 55, 75, 65, 30, 10, "grass", {Absorb, SleepPowder, PoisonPowder, StunSpore} };
+pokemon Gloom = { "Gloom", 60, 65, 70, 85, 75, 40, 21, "grass", {MegaDrain, SleepPowder, PoisonPowder, Acid} };
+pokemon Vileplume = { "Vileplume", 75, 80, 85, 110, 90, 50, 36, "grass", {SolarBeam, GigaDrain, SleepPowder, SludgeBomb} };
+pokemon Paras = { "Paras", 35, 70, 55, 45, 55, 25, 10, "bug", {Scratch, LeechLife, Spore, StunSpore} };
+pokemon Parasect = { "Parasect", 60, 95, 80, 60, 80, 30, 24, "bug", {Slash, Spore, GigaDrain, XScissor} };
+pokemon Venonat = { "Venonat", 60, 55, 50, 40, 55, 45, 10, "bug", {Confusion, Psybeam, StunSpore, Supersonic} };
+pokemon Venomoth = { "Venomoth", 70, 65, 60, 90, 75, 90, 31, "bug", {Psychic, BugBuzz, SleepPowder, QuiverDance} };
+pokemon Diglett = { "Diglett", 10, 55, 25, 35, 45, 95, 10, "ground", {Dig, Magnitude, SandAttack, RockTomb} };
+pokemon Dugtrio = { "Dugtrio", 35, 100, 50, 50, 70, 120, 26, "ground", {Earthquake, RockSlide, Sandstorm, SuckerPunch} };
+pokemon Meowth = { "Meowth", 40, 45, 35, 40, 40, 90, 10, "normal", {Scratch, Bite, PayDay, Screech} };
+pokemon Persian = { "Persian", 65, 70, 60, 65, 65, 115, 28, "normal", {Slash, Bite, Swift, Screech} };
+pokemon Psyduck = { "Psyduck", 50, 51, 48, 65, 50, 50, 10, "water", {WaterGun, Confusion, Disable, Screech} };
+pokemon Golduck = { "Golduck", 80, 81, 78, 95, 80, 85, 33, "water", {Surf, Psychic, IceBeam, CalmMind} };
+pokemon Mankey = { "Mankey", 40, 80, 35, 35, 45, 70, 10, "fighting", {KarateChop, LowKick, FocusEnergy, SeismicToss} };
+pokemon Primeape = { "Primeape", 65, 105, 60, 60, 70, 95, 28, "fighting", {CloseCombat, RockSlide, UTurn, FocusEnergy} };
+pokemon Growlithe = { "Growlithe", 55, 70, 45, 70, 50, 60, 10, "fire", {Ember, Bite, Roar, FlameWheel} };
+pokemon Arcanine = { "Arcanine", 90, 110, 80, 100, 80, 95, 36, "fire", {Flamethrower, ExtremeSpeed, Crunch, FireBlast} };
+pokemon Poliwag = { "Poliwag", 40, 50, 40, 40, 40, 90, 10, "water", {Bubble, WaterGun, Hypnosis, DoubleSlap} };
+pokemon Poliwhirl = { "Poliwhirl", 65, 65, 65, 50, 50, 90, 25, "water", {WaterGun, Hypnosis, BodySlam, MudShot} };
+pokemon Poliwrath = { "Poliwrath", 90, 95, 95, 70, 90, 70, 36, "water", {Surf, DynamicPunch, IcePunch, BulkUp} };
+pokemon Abra = { "Abra", 15, 10, 15, 105, 55, 90, 10, "psychic", {Teleport, Confusion, Psychic， Reflect} };
+pokemon Kadabra = { "Kadabra", 40, 35, 30, 120, 70, 105, 16, "psychic", {Psychic, Confusion, Recover, Disable} };
+pokemon Alakazam = { "Alakazam", 55, 50, 45, 135, 95, 120, 36, "psychic", {Psychic, CalmMind, Recover, ShadowBall} };
+pokemon Machop = { "Machop", 70, 80, 50, 35, 35, 35, 10, "fighting", {KarateChop, LowKick, FocusEnergy, BulkUp} };
+pokemon Machoke = { "Machoke", 80, 100, 70, 50, 60, 45, 28, "fighting", {CrossChop, Submission, BulkUp, RockSlide} };
+pokemon Machamp = { "Machamp", 90, 130, 80, 65, 85, 55, 36, "fighting", {DynamicPunch, CrossChop, BulkUp, StoneEdge} };
+pokemon Bellsprout = { "Bellsprout", 50, 75, 35, 70, 30, 40, 10, "grass", {VineWhip, Growth, SleepPowder, Acid} };
+pokemon Weepinbell = { "Weepinbell", 65, 90, 50, 85, 45, 55, 21, "grass", {RazorLeaf, SleepPowder, Acid, Slam} };
+pokemon Victreebel = { "Victreebel", 80, 105, 65, 100, 70, 70, 36, "grass", {SolarBeam, SludgeBomb, SleepPowder, RazorLeaf} };
+pokemon Tentacool = { "Tentacool", 40, 40, 35, 50, 100, 70, 10, "water", {PoisonSting, BubbleBeam, Supersonic, Acid} };
+pokemon Tentacruel = { "Tentacruel", 80, 70, 65, 80, 120, 100, 30, "water", {Surf, SludgeBomb, IceBeam, Barrier} };
+pokemon Geodude = { "Geodude", 40, 80, 100, 30, 30, 20, 10, "rock", {RockThrow, Magnitude, DefenseCurl, Rollout} };
+pokemon Graveler = { "Graveler", 55, 95, 115, 45, 45, 35, 25, "rock", {RockSlide, Magnitude, SelfDestruct, Earthquake} };
+pokemon Golem = { "Golem", 80, 110, 130, 55, 65, 45, 36, "rock", {Earthquake, StoneEdge, Explosion, RockBlast} };
+pokemon Ponyta = { "Ponyta", 50, 85, 55, 65, 65, 90, 10, "fire", {Ember, Stomp, FireSpin, FlameWheel} };
+pokemon Rapidash = { "Rapidash", 65, 100, 70, 80, 80, 105, 40，"fire"，{Flamethrower，Megahorn，Agility，FireSpin} };
+pokemon Slowpoke = { "Slowpoke", 90, 65, 65, 40, 40, 15, 10, "water", {WaterGun, Confusion, Yawn, SlackOff} };
+pokemon Slowbro = { "Slowbro",  95, 75, 110, 100, 80, 30, 37, "water", {Surf, Psychic, SlackOff, Amnesia} };
+pokemon Magnemite = { "Magnemite",  15, 35, 70, 95, 55, 45, 10, "electric", {ThunderShock, SonicBoom, ThunderWave, Spark} };
+pokemon Magneton = { "Magneton",  50, 60, 95, 120, 70, 70, 30, "electric", {Thunderbolt, ThunderWave, FlashCannon, TriAttack} };
+pokemon Farfetchd = { "Farfetchd",  51, 65, 55, 58, 62, 60, 10, "normal", {Peck, Slash, FuryCutter, SwordsDance} };
+pokemon Doduo = { "Doduo",  35, 85, 45, 35, 35, 75, 10, "normal", {Peck, FuryAttack, QuickAttack, TriAttack} };
+pokemon Dodrio = { "Dodrio",  60, 110, 70, 60, 60, 110, 31, "normal", {DrillPeck, TriAttack, Agility, JumpKick} };
+pokemon Seel = { "Seel",  65, 45, 55, 45, 70, 45, 10, "water", {Headbutt, IceShard, Rest, AuroraBeam} };
+pokemon Dewgong = { "Dewgong",  90, 70, 80, 70, 95, 70, 34, "water", {IceBeam, Surf, AuroraBeam, Rest} };
+pokemon Grimer = { "Grimer",  80, 80, 50, 40, 50, 25, 10, "poison", {Sludge, PoisonGas, Minimize, MudSlap} };
+pokemon Muk = { "Muk",  105, 105, 75, 65, 100, 50, 38, "poison", {SludgeBomb, Minimize, Curse, Toxic} };
+pokemon Shellder = { "Shellder",  30, 65, 100, 45, 25, 40, 10, "water", {Tackle, IceShard, Clamp, Supersonic} };
+pokemon Cloyster = { "Cloyster",  50, 95, 180, 85, 45, 70, 36, "water", {IceBeam, Surf, Spikes, ShellSmash} };
+pokemon Gastly = { "Gastly",  30, 35, 30, 100, 35, 80, 10, "ghost", {Lick, Hypnosis, NightShade, ConfuseRay} };
+pokemon Haunter = { "Haunter",  45, 50, 45, 115, 55, 95, 25, "ghost", {ShadowBall, Hypnosis, Curse, ConfuseRay} };
+pokemon Gengar = { "Gengar",  60, 65, 60, 130, 75, 110, 36, "ghost", {ShadowBall, SludgeBomb, Hypnosis, Thunderbolt} };
+pokemon Onix = { "Onix",  35, 45, 160, 30, 45, 70, 10, "rock", {RockThrow, Bind, RockTomb, Sandstorm} };
+pokemon Drowzee = { "Drowzee",  60, 48, 45, 43, 90, 42, 10, "psychic", {Confusion, Hypnosis, Headbutt, Psybeam} };
+pokemon Hypno = { "Hypno",  85, 73, 70, 73, 115, 67, 26, "psychic", {Psychic, Hypnosis, DreamEater, CalmMind} };
+pokemon Krabby = { "Krabby",  30, 105, 90, 25, 25, 50, 10, "water", {Bubble, Crabhammer, ViceGrip, Stomp} };
+pokemon Kingler = { "Kingler",  55, 130, 115, 50, 50, 75, 28, "water", {Crabhammer, XScissor, SwordsDance, Stomp} };
+pokemon Voltorb = { "Voltorb",  40, 30, 50, 55, 55, 100, 10, "electric", {Spark, SonicBoom, SelfDestruct, LightScreen} };
+pokemon Electrode = { "Electrode",  60, 50, 70, 80, 80, 150, 30, "electric", {Thunderbolt, Explosion, LightScreen, Reflect} };
+pokemon Exeggcute = { "Exeggcute",  60, 40, 80, 60, 45, 40, 10, "grass", {Confusion, SleepPowder, LeechSeed, Reflect} };
+pokemon Exeggutor = { "Exeggutor",  95, 95, 85, 125, 75, 55, 36, "grass", {Psychic, SolarBeam, SleepPowder, Explosion} };
+pokemon Cubone = { "Cubone",  50, 50, 95, 40, 50, 35, 10, "ground", {BoneClub, Headbutt, FocusEnergy, Bonemerang} };
+pokemon Marowak = { "Marowak",  60, 80, 110, 50, 80, 45, 28, "ground", {Bonemerang, Earthquake, SwordsDance, RockSlide} };
+pokemon Hitmonlee = { "Hitmonlee",  50, 110, 53, 35, 110, 87, 20, "fighting", {HighJumpKick, MegaKick, BlazeKick, FocusEnergy} };
+pokemon Hitmonchan = { "Hitmonchan",  50, 105, 79, 35, 110, 76, 20, "fighting", {FirePunch, IcePunch, ThunderPunch, MachPunch} };
+pokemon Lickitung = { "Lickitung",  90, 55, 75, 60, 75, 30, 10, "normal", {Lick, Slam, Disable, BodySlam} };
+pokemon Koffing = { "Koffing",  40, 65, 95, 60, 45, 35, 10, "poison", {Smog, Sludge, SelfDestruct, Toxic} };
+pokemon Weezing = { "Weezing",  65, 90, 120, 85, 70, 60, 35, "poison", {SludgeBomb, Explosion, Toxic, Flamethrower} };
+pokemon Rhyhorn = { "Rhyhorn",  80, 85, 95, 30, 30, 25, 10, "ground", {HornAttack, Stomp, RockBlast, Bulldoze} };
+pokemon Rhydon = { "Rhydon",  105, 130, 120, 45, 45, 40, 42, "ground", {Earthquake, Megahorn, StoneEdge, RockSlide} };
+pokemon Chansey = { "Chansey",  150, 5, 5, 35, 105, 50, 10, "normal", {SoftBoiled, SeismicToss, ThunderWave, Toxic} };
+pokemon Tangela = { "Tangela",  65, 55, 115, 100, 40, 60, 10, "grass", {VineWhip, SleepPowder, StunSpore, GigaDrain} };
+pokemon Kangaskhan = { "Kangaskhan",  105, 95, 80, 40, 80, 90, 10, "normal", {MegaPunch, Crunch, Earthquake, FakeOut} };
+pokemon Horsea = { "Horsea",  30, 40, 70, 70, 25, 60, 10, "water", {Bubble, Smokescreen, Twister, WaterPulse} };
+pokemon Seadra = { "Seadra",  55, 65, 95, 95, 45, 85, 32, "water", {Surf, DragonBreath, Agility, IceBeam} };
+pokemon Goldeen = { "Goldeen",  45, 67, 60, 35, 50, 63, 10, "water", {Peck, HornAttack, WaterPulse, Agility} };
+pokemon Seaking = { "Seaking",  80, 91, 65, 65, 80, 68, 33, "water", {Waterfall, Megahorn, HornDrill, AquaTail} };
+pokemon Staryu = { "Staryu",  30, 45, 55, 70, 55, 85, 10, "water", {WaterGun, RapidSpin, Recover, Swift} };
+pokemon Starmie = { "Starmie",  60, 75, 85, 100, 85, 115, 36, "water", {Surf, Psychic, Thunderbolt, Recover} };
+pokemon MrMime = { "MrMime",  40, 45, 65, 100, 120, 90, 10, "psychic", {Psychic, Barrier, Reflect, LightScreen} };
+pokemon Scyther = { "Scyther",  70, 110, 80, 55, 80, 105, 10, "bug", {Slash, WingAttack, SwordsDance, XScissor} };
+pokemon Jynx = { "Jynx",  65, 50, 35, 115, 95, 95, 10, "ice", {IceBeam, Psychic, LovelyKiss, Blizzard} };
+pokemon Electabuzz = { "Electabuzz",  65, 83, 57, 95, 85, 105, 10, "electric", {ThunderPunch, Thunderbolt, LightScreen, Psychic} };
+pokemon Magmar = { "Magmar",  65, 95, 57, 100, 85, 93, 10, "fire", {Flamethrower, FirePunch, ConfuseRay, SunnyDay} };
+pokemon Pinsir = { "Pinsir",  65, 115, 100, 55, 70, 85, 10, "bug", {XScissor, SwordsDance, ViceGrip, RockSlide} };
+pokemon Tauros = { "Tauros",  75, 100, 95, 40, 70, 110, 10, "normal", {BodySlam, Earthquake, Thrash, ZenHeadbutt} };
+pokemon Magikarp = { "Magikarp",  10, 10, 55, 15, 20, 80, 5, "water", {Splash, Tackle, Flail, Bounce} };
+pokemon Gyarados = { "Gyarados",  95, 115, 79, 60, 100, 81, 20, "water", {Waterfall, Crunch, DragonDance, IceFang} };
+pokemon Lapras = { "Lapras",  130, 85, 80, 85, 95, 60, 10, "water", {Surf, IceBeam, Thunderbolt, ConfuseRay} };
+pokemon Ditto = { "Ditto",  48, 48, 48, 48, 48, 48, 10, "normal", {Transform, Rest, SleepTalk, Substitute} };
+pokemon Eevee = { "Eevee",  55, 55, 50, 45, 65, 55, 10, "normal", {QuickAttack, Bite, SandAttack, Swift} };
+pokemon Vaporeon = { "Vaporeon",  130, 65, 60, 110, 95, 65, 36, "water", {Surf, IceBeam, AuroraBeam, Wish} };
+pokemon Jolteon = { "Jolteon",  65, 65, 60, 110, 95, 130, 36, "electric", {Thunderbolt, ThunderWave, DoubleKick, Agility} };
+pokemon Flareon = { "Flareon",  65, 130, 60, 95, 110, 65, 36, "fire", {Flamethrower, FireBlast, QuickAttack, Bite} };
+pokemon Porygon = { "Porygon",  65, 60, 70, 85, 75, 40, 10, "normal", {TriAttack, Recover, Thunderbolt, IceBeam} };
+pokemon Omanyte = { "Omanyte",  35, 40, 100, 90, 55, 35, 10, "rock", {WaterGun, RockThrow, AncientPower, Bite} };
+pokemon Omastar = { "Omastar",  70, 60, 125, 115, 70, 55, 40, "rock", {Surf, RockSlide, AncientPower, IceBeam} };
+pokemon Kabuto = { "Kabuto",  30, 80, 90, 55, 45, 55, 10, "rock", {Scratch, AquaJet, AncientPower, MudShot} };
+pokemon Kabutops = { "Kabutops",  60, 115, 105, 65, 70, 80, 40, "rock", {Slash, Waterfall, AncientPower, SwordsDance} };
+pokemon Aerodactyl = { "Aerodactyl",  80, 105, 65, 60, 75, 130, 10, "rock", {RockSlide, WingAttack, Crunch, Fly} };
+pokemon Snorlax = { "Snorlax",  160, 110, 65, 65, 110, 30, 10, "normal", {BodySlam, Rest, SleepTalk, Earthquake} };
+pokemon Articuno = { "Articuno",  90, 85, 100, 95, 125, 85, 50, "ice", {IceBeam, Fly, Reflect, Agility} };
+pokemon Zapdos = { "Zapdos",  90, 90, 85, 125, 90, 100, 50, "electric", {Thunderbolt, DrillPeck, Agility, LightScreen} };
+pokemon Moltres = { "Moltres",  90, 100, 90, 125, 85, 90, 50, "fire", {Flamethrower, Fly, SunnyDay, FireBlast} };
+pokemon Dratini = { "Dratini",  41, 64, 45, 50, 50, 50, 10, "dragon", {DragonBreath, ThunderWave, Slam، Agility} };
+pokemon Dragonair = { "Dragonair",  61, 84, 65,70,70,70,30,"dragon",{DragonBreath,Surf,ThunderWave,Agility} };
+pokemon Dragonite = { "Dragonite",  91, 134, 95, 100, 100, 80, 55, "dragon", {DragonClaw, Fly, Thunderbolt, IceBeam} };
+pokemon Mewtwo = { "Mewtwo",  106, 110, 90, 154, 90, 130, 70, "psychic", {Psychic, CalmMind, Recover, IceBeam} };
+pokemon Mew = { "Mew",  100, 100, 100, 100, 100, 100, 50, "psychic", {Psychic, Transform, Metronome, SoftBoiled} };
+
+// Stores ALL Pokémon the player owns
+vector<Pokemon> playerCollection;
+
+// Stores the 6 Pokémon currently used for battles
+vector<Pokemon> battleTeam;
+
+// Function to add Pokémon to the player's collection
+void AddPokemonToCollection(const Pokemon& pokemon)
+{
+    playerCollection.push_back(pokemon);
+}
+
+// Function to add Pokémon to the battle team
+bool AddPokemonToBattleTeam(const Pokemon& pokemon)
+{
+    // Team limit = 6
+    if (battleTeam.size() >= 6)
+    {
+        cout << "Battle team is full!\n";
+        return false;
+    }
+
+    battleTeam.push_back(pokemon);
+    return true;
+}
+
+// Function to display a Pokémon list
+void DisplayPokemon(const Pokemon& p) {
+    // Header with stats
+    cout << p.name << " | Level: " << p.level
+        << " | HP: " << p.maxHp
+        << " | ATK: " << p.attack
+        << " | DEF: " << p.defense
+        << " | SPA: " << p.specialAttack
+        << " | SPD: " << p.specialDefense
+        << " | SPE: " << p.speed
+        << " | Type: " << p.type << endl;
+
+    // Detailed Move List
+    cout << "Moves List:" << endl;
+    for (int i = 0; i < p.moves.size(); i++) {
+        const Move& m = p.moves[i];
+        cout << "  " << i + 1 << ". " << m.name
+            << " | Type: " << m.type
+            << " | Power: " << m.power
+			<< " | " << (m.special ? "Special" : "Physical") << endl;
+    }
+    cout << "--------------" << endl;
+}
+//need to add pokemon to collection and battle team
+void addpokemon(const Pokemon& pokemon)
+{
+    // Add to collection
+    AddPokemonToCollection(pokemon);
+    // Add to battle team
+    AddPokemonToBattleTeam(pokemon);
+};
+
+void display() {
+    cout << "\n=== Player Collection ===\n";
+    for (const auto& p : playerCollection) {
+        DisplayPokemon(p);
+    }
+
+    cout << "\n=== Battle Team ===\n";
+    for (const auto& p : battleTeam) {
+        DisplayPokemon(p);
+    }
+    // No return 0 here because the function is void
+}
 
 // lets player pick a pokemon to add to their team depending on gym level (0..n)
 void generatepokemon(int gym_level)
@@ -731,8 +729,16 @@ bool Battle(Pokemon& enemy) {
     }
 }
 
+void HealTeam() {
+    for (auto& p : battleTeam) {
+        p.hp = p.maxHp;
+    }
+    cout << "\nYour team has been fully healed!\n";
+}
+
 int main()
 {
+    srand(time(0));
     cout << "Welcome to 'pokemon but worst'\n";
     cout << "Do you want to play? (y/n): ";
     char start;
@@ -770,33 +776,57 @@ int main()
 	}
 	// rival battle 1
     battle(rivalteam);
+	HealTeam();
 	generatepokemon(0);
+	riddle1();
     battle(brockTeam);
+    HealTeam();
     generatepokemon(1);
+    riddle2();
     battle(mistyTeam);
+    HealTeam();
     generatepokemon(2);
     battle(rival2Team);
+    HealTeam();
     generatepokemon(3);
+    riddle3();
     battle(ltSurgeTeam);
+    HealTeam();
     generatepokemon(4);
+    riddle4();
     battle(erikaTeam);
+    HealTeam();
     generatepokemon(5);
+    riddle5();
     battle(kogaTeam);
+    HealTeam();
     generatepokemon(6);
     battle(rival3Team);
+    HealTeam();
     generatepokemon(7);
+    riddle6();
     battle(sabrinaTeam);
+    HealTeam();
     generatepokemon(8);
+    riddle7();
     battle(blaineTeam);
+    HealTeam();
     generatepokemon(9);
     battle(rival4Team);
+    HealTeam();
     generatepokemon(10);
+    riddle8();
     battle(giovanniTeam);
+    HealTeam();
     generatepokemon(11);
     battle(loreleiTeam);
+    HealTeam();
     battle(brunoTeam);
+    HealTeam();
     battle(agathaTeam);
+    HealTeam();
     battle(lanceTeam);
+    HealTeam();
     battle(championTeam);
 	cont << "\nCongratulations on beating the game! Thanks for playing :D\n";
     count << "6767676767676767676767667676767676767676767676767676741";
@@ -915,6 +945,7 @@ void riddle1() {
                     << " lost 10 HP!\n";
             }
         }
+    }
 };
 
 void riddle2() {
@@ -944,7 +975,9 @@ void riddle2() {
                     << " lost 10 HP!\n";
             }
         }
-    };
+    }
+};
+
 void riddle3() {
     //this is the riddle for the third gym leader
     //mulitple choice question with 4 options
@@ -972,7 +1005,8 @@ void riddle3() {
                     << " lost 10 HP!\n";
             }
         }
-    };
+    }
+};
 
 void riddle4() {
     //this is the riddle for the fourth gym leader
@@ -1001,7 +1035,8 @@ void riddle4() {
                     << " lost 10 HP!\n";
             }
         }
-    };
+    }
+};
 
 void riddle5() {
     //this is the riddle for the fifth gym leader
@@ -1030,7 +1065,8 @@ void riddle5() {
                     << " lost 10 HP!\n";
             }
         }
-    };
+    }
+};
 
 void riddle6() {
     //this is the riddle for the sixth gym leader
@@ -1059,7 +1095,8 @@ void riddle6() {
                     << " lost 10 HP!\n";
             }
         }
-    };
+    }
+};
 
 void riddle7() {
     //this is the riddle for the seventh gym leader
@@ -1088,7 +1125,8 @@ void riddle7() {
                     << " lost 10 HP!\n";
             }
         }
-    };
+    }
+};
 
 void riddle8() {
     //this is the riddle for the eighth gym leader
@@ -1117,7 +1155,10 @@ void riddle8() {
                     << " lost 10 HP!\n";
             }
         }
-    };
+    }
+};
+
+
     vector<Pokemon> rivalTeam = {
         { "Charmander", 12, 40, 40, 80, 100, 30, 30, 20, "fire", {Scratch, Growl, Ember, Smokescreen} }
     };
