@@ -68,8 +68,7 @@ void DisplayPokemon(const Pokemon& p) {
         cout << "  " << i + 1 << ". " << m.name
             << " | Type: " << m.type
             << " | Power: " << m.power
-            << " | Acc: " << m.accuracy
-            << " | PP: " << m.pp << "/" << m.maxPP << endl;
+			<< " | " << (m.special ? "Special" : "Physical") << endl;
     }
     cout << "--------------" << endl;
 }
@@ -463,16 +462,13 @@ void generatepokemon(int gym_level)
     case 9: // after Sabrina
         pool = { "Drowzee", "Krabby", "Cubone", "Ponyta" };
         break;
-    case 10: // after rival battle 4
-        pool = { "Geodude", "Graveler", "Shellder", "Krabby" };
-        break;
-    case 11: // after Blaine
+    case 10: // after Blaine
         pool = { "Magmar", "Electabuzz", "Pinsir", "Tauros", "Scyther" };
         break;
-    case 12: // after rival battle 5
+    case 11: // after rival battle 5
         pool = { "Omanyte", "Kabuto", "Aerodactyl", "Dratini", "Horsea" };
         break;
-    case 13: // after Giovanni
+    case 12: // after Giovanni
         pool = { "Rhydon", "Gyarados", "Lapras", "Snorlax", "Gengar" };
         break;
     default: // late game / fallback
@@ -547,24 +543,9 @@ int main()
         break;
     }
 
-    Pokemon playerPokemon;
-    if (!findPokemonByName(starterName, playerPokemon)) {
-        cout << "Starter not found in pokedex — exiting.\n";
-        return 1;
-    }
-    cout << "You chose " << playerPokemon.name << "! HP: " << playerPokemon.hp << ", Attack: " << playerPokemon.attack << "\n";
+};
+int gyms_beaten = 0;
 
-    // Rival battle rival always picks charmander
-    Pokemon rivalPokemon = pokedex[4]; // Charmander
-
-    cout << "\nRival challenges you to a battle with " << rivalPokemon.name << "!\n";
-    bool won = simpleBattle(playerPokemon, rivalPokemon);
-    if (!won) {
-        cout << "You lost to the rival. Game over for now.\n";
-        return 0;
-    }
-
-    int gyms_beaten = 0;
 void riddle1() {
     //first gym leader riddle
     //mulitple choice question with 4 options
@@ -750,13 +731,11 @@ void riddle7() {
     cout << "d. magikarp" << endl;
     if (cin.get() == 'c') {
         cout << "correct!" << endl;
-        //reward
     }
     else {
         cout << "wrong! try again!" << endl;
         if (cin.get() == 'c') {
             cout << "correct!" << endl;
-            //reward
         }
         else {
             cout << "wrong again! you get a punishment!" << endl;
@@ -797,7 +776,9 @@ void riddle8() {
             }
         }
     };
-
+    vector<Pokemon> rivalTeam = {
+        { "Charmander", 12, 40, 40, 80, 100, 30, 30, 20, "fire", {Scratch, Growl, Ember, Smokescreen} }
+    };
     vector<Pokemon> brockTeam = {
         { "Geodude", 12, 40, 40, 80, 100, 30, 30, 20, "rock", {RockThrow, Rollout, DefenseCurl, Tackle} },
         { "Onix", 14, 35, 35, 45, 160, 30, 45, 70, "rock", {RockTomb, Sandstorm, Bind, Screech} }
@@ -806,6 +787,12 @@ void riddle8() {
         { "Staryu", 18, 30, 30, 45, 55, 70, 55, 85, "water", {WaterGun, RapidSpin, Recover, Swift} },
         { "Starmie", 21, 60, 60, 75, 85, 100, 85, 115, "water", {Surf, Psychic, Thunderbolt, Recover} }
     };
+	vector<Pokemon> rival2Team = {
+		{ "Charmeleon", 16, 50, 50, 90, 110, 40, 40, 30, "fire", {Scratch, Growl, Ember, Smokescreen} },
+		{ "Pidgeotto", 16, 40, 40, 60, 50, 90, 85, 55, "flying", {Gust, QuickAttack, WingAttack, SandAttack} },
+		{ "rattata", 16, 30, 30, 56, 35, 72, 35, 40, "normal", {Tackle, TailWhip, QuickAttack, HyperFang} },
+		{ "abra", 16, 25, 25, 20, 15, 105, 55, 90, "psychic", {Teleport, Confusion, Psybeam, Reflect} }
+	};
     vector<Pokemon> ltSurgeTeam = {
         { "Voltorb", 21, 40, 40, 30, 50, 55, 55, 100, "electric", {Spark, SonicBoom, SelfDestruct, LightScreen} },
         { "Raichu", 24, 60, 60, 90, 55, 90, 80, 110, "electric", {Thunderbolt, QuickAttack, ThunderWave, IronTail} }
@@ -821,6 +808,13 @@ void riddle8() {
 		{ "Muk", 38, 105, 105, 65, 100, 50, 50, 75, "poison", {SludgeBomb, AcidArmor, Minimize, Rest} },
 		{ "Venonat", 31, 60, 60, 55, 50, 40, 40, 45, "bug", {Tackle, Supersonic, PoisonPowder, LeechLife} }
     };
+    vector<Pokemon> rival3Team = {
+        { "Charmeleon", 27, 50, 50, 90, 110, 40, 40, 30, "fire", {Scratch, Growl, Ember, Smokescreen} },
+		{ "Pidgeotto", 26, 40, 40, 60, 50, 90, 85, 55, "flying", {Gust, QuickAttack, WingAttack, SandAttack} },
+		{ "garados", 23, 95, 95, 125, 79, 81, 60, 100, "water", {Waterfall, Bite, DragonRage, HyperBeam} },
+		{ "kadabra", 22, 40, 40, 35, 30, 120, 70, 105, "psychic", {Psychic, Confusion, Recover, Disable} },
+		{ "growleth", 24, 65, 65, 75, 60, 75, 50, 60, "fire", {Ember, Bite, Roar, FlameWheel} }
+    };
     vector<Pokemon> sabrinaTeam = {
         { "Kadabra", 38, 40, 40, 35, 30, 120, 70, 105, "psychic", {Psychic, Confusion, Recover, Disable} },
         { "Alakazam", 43, 55, 55, 50, 45, 135, 95, 120, "psychic", {Psychic, CalmMind, Recover, ShadowBall} },
@@ -832,6 +826,14 @@ void riddle8() {
         { "Arcanine", 47, 90, 90, 110, 80, 100, 80, 95, "fire", {Flamethrower, ExtremeSpeed, Crunch, FireBlast} },
 		{ "Rapidash", 40, 65, 65, 100, 70, 80, 60, 105, "fire", {FlameWheel, Stomp, Agility, FireBlast} },
 		{ "Magmar", 40, 65, 65, 95, 57, 95, 93, 109, "fire", {Ember, Smokescreen, ConfuseRay, FireBlast} }
+    };
+    vector<Pokemon> rival4Team = {
+		{ "Charizard", 36,78,78,84,109,109,85, "fire",{Flamethrower,Fly,DragonClaw,Slash} },
+        { "Pidgeot", 83,80,83,80,83,83,79, "flying",{WingAttack,Fly,QuickAttack,Hurricane} },
+        { "garados", 23, 95, 95, 125, 79, 81, 60, 100, "water", {Waterfall, Bite, DragonRage, HyperBeam} },
+        { "alakazam", 43, 55, 55, 50, 45, 135, 95, 120, "psychic", {Psychic, CalmMind, Recover, ShadowBall} },
+        { "growleth", 24, 65, 65, 75, 60, 75, 50, 60, "fire", {Ember, Bite, Roar, FlameWheel} },
+		{ "rhydon", 40, 105, 105, 130, 120, 45, 45, 40, "ground", {HornAttack, Stomp, RockBlast, Bulldoze} }
     };
     vector<Pokemon> giovanniTeam = {
         { "Rhyhorn", 45, 80, 80, 85, 95, 30, 30, 25, "ground", {HornAttack, Stomp, RockBlast, Bulldoze} },
@@ -886,8 +888,7 @@ void riddle8() {
                 << m.name
                 << " | Type: " << m.type
                 << " | Power: " << m.power
-                << " | Accuracy: " << m.accuracy
-                << " | PP: " << m.pp << "/" << m.maxPP
+                << " | " << (m.special ? "Special" : "Physical") << endl;
                 << endl;
         }
     }
