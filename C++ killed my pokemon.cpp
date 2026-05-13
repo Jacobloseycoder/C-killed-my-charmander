@@ -926,7 +926,7 @@ bool battle(vector<Pokemon>& enemyTeam) {
                 }
                 int targetIdx = switchChoice - 1;
                 if (battleTeam[targetIdx].hp <= 0) {
-                    cout << battleTeam[targetIdx].name << " they are dead you can use a coepse to fight!\n";
+                    cout << battleTeam[targetIdx].name << " they are dead you can use a corpse to fight!\n";
                     continue;
                 }
                 activeIdx = targetIdx; // Update the index of the active player Pokemon
@@ -1412,6 +1412,6 @@ int main()
 
     cout << "\nCongratulations on beating the game! Thanks for playing :D\n";
     cout << "You beat " << gyms_beaten << " riddles!\n"; // Display total riddles beaten
-    cout << "I would like to thank me, myself, and I for carrying this project from day 1 to now at 11:22 PM on may 12 2026 im the goat alex suck get good L + ratio + 67"
+    cout << "I would like to thank me, myself, and I for carrying this project from day 1 to now at 11:22 PM on may 12 2026 im the goat alex suck get good L + ratio + 67";
         return 0; // Explicitly return 0 for successful execution
 }
