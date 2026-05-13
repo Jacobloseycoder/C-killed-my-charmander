@@ -54,6 +54,7 @@ Move Acid = { "Acid", "poison", 40, true };
 Move Agility = { "Agility", "normal", 50, false };
 Move AncientPower = { "AncientPower", "rock", 60, true };
 Move AuroraBeam = { "AuroraBeam", "ice", 65, true };
+Move AirCutter = { "AirCutter", "flying", 60, true };
 Move Barrier = { "Barrier", "psychic", 100, true };
 Move Bite = { "Bite", "dark", 60, false };
 Move BlazeKick = { "BlazeKick", "fire", 85, false };
@@ -207,8 +208,27 @@ Move TriAttack = { "TriAttack", "normal", 80, true };
 Move Twineedle = { "Twineedle", "bug", 25, false };
 Move Twister = { "Twister", "dragon", 40, true };
 Move UTurn = { "UTurn", "bug", 70, false };
+Move StringShot = { "StringShot", "bug", 0, true };
+Move Wrap = { "Wrap", "normal", 15, false };
+Move Dig = { "Dig", "ground", 80, false };
+Move Growth = { "Growth", "grass", 0, true };
+Move SlackOff = { "SlackOff", "normal", 0, true };
+Move Amnesia = { "Amnesia", "psychic", 0, true };
+Move Bind = { "Bind", "normal", 15, false };
+Move DreamEater = { "DreamEater", "psychic", 100, true };
+Move Bulldoze = { "Bulldoze", "ground", 60, false };
+Move RapidSpin = { "RapidSpin", "normal", 50, false };
+Move Hurricane = { "Hurricane", "flying", 110, true };
+Move SpikeCannon = { "SpikeCannon", "normal", 20, false };
+Move RazorShell = { "RazorShell", "water", 75, false };
+Move MachPunch = { "MachPunch", "fighting", 40, false };
+Move IronTail = { "IronTail", "steel", 100, false };
+Move HyperBeam = { "HyperBeam", "normal", 150, true };
+Move AquaJet = { "AquaJet", "water", 40, false };
+Move StunSpore = { "StunSpore", "grass", 0, true };
 Move ViceGrip = { "ViceGrip", "normal", 55, false };
 Move VineWhip = { "VineWhip", "grass", 45, false };
+Move Thrash = { "Thrash", "normal", 120, false };
 Move WaterGun = { "WaterGun", "water", 40, true };
 Move WaterPulse = { "WaterPulse", "water", 60, true };
 Move Waterfall = { "Waterfall", "water", 80, true };
@@ -254,6 +274,7 @@ Pokemon NidoranF("NidoranF", 5, 55, 47, 52, 40, 40, 41, "poison", { PoisonSting,
 Pokemon Nidorina("Nidorina", 16, 70, 61, 67, 61, 61, 56, "poison", { PoisonSting, Bite, DoubleKick, HelpingHand }); // Corrected stats & move typo
 Pokemon NidoranM("NidoranM", 5, 46, 57, 40, 40, 40, 50, "poison", { Peck, DoubleKick, Leer, PoisonSting });
 Pokemon Nidorino("Nidorino", 16, 61, 71, 67, 55, 55, 65, "poison", { PoisonJab, DoubleKick, HornAttack, FuryAttack }); // Corrected stats & move typo
+Pokemon Nidoqueen("Nidoqueen", 36, 90, 92, 87, 75, 85, 76, "poison", { Earthquake, SludgeBomb, Megahorn, IceBeam });
 Pokemon Nidoking("Nidoking", 36, 81, 101, 77, 85, 75, 85, "poison", { Earthquake, SludgeBomb, Megahorn, IceBeam });
 Pokemon Clefairy("Clefairy", 5, 70, 45, 48, 60, 65, 35, "fairy", { Sing, DoubleSlap, Metronome, Moonlight }); // Type changed to fairy
 Pokemon Clefable("Clefable", 20, 95, 70, 73, 95, 90, 60, "fairy", { Moonblast, Flamethrower, Thunderbolt, SoftBoiled }); // Adjusted level, type changed to fairy
@@ -262,7 +283,7 @@ Pokemon Ninetales("Ninetales", 20, 73, 76, 75, 81, 100, 100, "fire", { Flamethro
 Pokemon Jigglypuff("Jigglypuff", 5, 115, 45, 20, 45, 25, 20, "normal", { Sing, Pound, Rollout, DefenseCurl });
 Pokemon Wigglytuff("Wigglytuff", 20, 140, 70, 45, 85, 50, 45, "normal", { BodySlam, PlayRough, ShadowBall, Thunderbolt }); // Adjusted level
 Pokemon Zubat("Zubat", 5, 40, 45, 35, 30, 40, 55, "poison", { Bite, WingAttack, ConfuseRay, Supersonic });
-Pokemon Golbat("Golbat", 20, 75, 80, 70, 65, 75, 90, "poison", { Bite, WingAttack, ConfuseRay, AirCutter }); // Adjusted level (Assuming AirCutter is a substitute)
+Pokemon Golbat("Golbat", 20, 75, 80, 70, 65, 75, 90, "poison", { Bite, WingAttack, ConfuseRay, AirCutter }); // Adjusted level
 Pokemon Oddish("Oddish", 5, 45, 50, 55, 75, 65, 30, "grass", { Absorb, SleepPowder, PoisonPowder }); // Removed StunSpore due to type inconsistency
 Pokemon Gloom("Gloom", 16, 60, 65, 70, 85, 75, 40, "grass", { MegaDrain, SleepPowder, PoisonPowder, Acid }); // Adjusted level
 Pokemon Vileplume("Vileplume", 32, 75, 80, 85, 110, 90, 50, "grass", { SolarBeam, GigaDrain, SleepPowder, SludgeBomb }); // Adjusted level
@@ -409,11 +430,11 @@ vector<Pokemon> rivalTeam = {
 };
 vector<Pokemon> brockTeam = {
     Pokemon("Geodude", 12, 40, 80, 100, 30, 30, 20, "rock", {RockThrow, Rollout, DefenseCurl, Tackle}),
-    Pokemon("Onix", 14, 35, 45, 160, 30, 45, 70, "rock", {RockTomb, Sandstorm, Bind, Screech})
+    Pokemon("Onix", 14, 35, 45, 130, 30, 45, 70, "rock", {RockTomb, Sandstorm, Bind, Screech})
 };
 vector<Pokemon> mistyTeam = {
     Pokemon("Staryu", 18, 30, 45, 55, 70, 55, 85, "water", {WaterGun, RapidSpin, Recover, Swift}),
-    Pokemon("Starmie", 21, 60, 75, 85, 100, 85, 115, "water", {Surf, Psychic, Thunderbolt, Recover})
+    Pokemon("Starmie", 21, 60, 65, 85, 90, 85, 90, "water", {Surf, Psychic, Thunderbolt, Recover})
 };
 vector<Pokemon> rival2Team = {
     Pokemon("Charmeleon", 16, 50, 64, 58, 80, 65, 80, "fire", {Scratch, Growl, Ember, Smokescreen}),
@@ -745,7 +766,7 @@ bool battle(vector<Pokemon>& enemyTeam) {
     }
 
     cout << "\n============================================\n";
-    cout << "A wild " << enemyTeam[currentEnemyActiveIdx].name << " appeared!\n";
+    cout << "the enemy called " << enemyTeam[currentEnemyActiveIdx].name << "!\n";
     cout << "Go! " << battleTeam[activeIdx].name << "!\n";
     cout << "============================================\n";
 
@@ -776,7 +797,7 @@ bool battle(vector<Pokemon>& enemyTeam) {
             if (!(cin >> action)) { // Check for non-numeric input
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid input. Please enter 1 or 2.\n";
+                cout << " pick option 1 or 2 alex not 67 or what ever you typed.\n";
                 continue;
             }
 
@@ -804,7 +825,7 @@ bool battle(vector<Pokemon>& enemyTeam) {
                 validAction = true;
             }
             else if (action == 2) {
-                cout << "Choose a Pokemon to switch to:\n";
+                cout << "Choose a Pokemon to die next:\n";
                 for (size_t i = 0; i < battleTeam.size(); ++i) {
                     cout << i + 1 << ". " << battleTeam[i].name << " [HP: " << battleTeam[i].hp << "/" << battleTeam[i].maxHp << "]\n";
                 }
@@ -814,7 +835,7 @@ bool battle(vector<Pokemon>& enemyTeam) {
                 if (!(cin >> switchChoice)) {
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "Invalid input. Please enter a number.\n";
+                    cout << "you didn't pick a number you fool.\n";
                     continue;
                 }
                 if (switchChoice == 0) {
@@ -824,15 +845,15 @@ bool battle(vector<Pokemon>& enemyTeam) {
 
                 int targetIdx = switchChoice - 1;
                 if (targetIdx < 0 || targetIdx >= (int)battleTeam.size()) {
-                    cout << "Invalid Pokemon choice.\n";
+                    cout << "not a option you bafoon.\n";
                     continue;
                 }
                 if (targetIdx == activeIdx) {
-                    cout << battleTeam[targetIdx].name << " is already in battle!\n";
+                    cout << battleTeam[targetIdx].name << " your already using them stupid!\n";
                     continue;
                 }
                 if (battleTeam[targetIdx].hp <= 0) {
-                    cout << battleTeam[targetIdx].name << " has no energy left to battle!\n";
+                    cout << battleTeam[targetIdx].name << " they are dead you can use a coepse to fight!\n";
                     continue;
                 }
 
@@ -847,7 +868,7 @@ bool battle(vector<Pokemon>& enemyTeam) {
             }
             else {
                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear for bad action input
-                cout << "Invalid action choice.\n";
+                cout << "play the game right you noob.\n";
             }
         }
         // Re-reference player after possible switch
@@ -888,10 +909,10 @@ bool battle(vector<Pokemon>& enemyTeam) {
 
         // If player's active fainted, force a switch if possible
         if (activePlayer.hp <= 0 && IsTeamAlive()) { // Check if player has other healthy Pokemon
-            cout << "\n" << activePlayer.name << " fainted!\n";
+            cout << "\n" << activePlayer.name << " is dead you animal abuser!\n";
             bool validSwitch = false;
             while (!validSwitch) {
-                cout << "Choose your next Pokemon:\n";
+                cout << "Choose your next scarafice:\n";
                 for (size_t i = 0; i < battleTeam.size(); ++i) {
                     cout << i + 1 << ". " << battleTeam[i].name << " [HP: " << battleTeam[i].hp << "/" << battleTeam[i].maxHp << "]\n";
                 }
@@ -900,12 +921,12 @@ bool battle(vector<Pokemon>& enemyTeam) {
                 if (!(cin >> switchChoice) || switchChoice < 1 || switchChoice > static_cast<int>(battleTeam.size())) {
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "Invalid input. Please enter a number.\n";
+                    cout << "not a option alex get your act together.\n";
                     continue;
                 }
                 int targetIdx = switchChoice - 1;
                 if (battleTeam[targetIdx].hp <= 0) {
-                    cout << battleTeam[targetIdx].name << " has no energy left to battle!\n";
+                    cout << battleTeam[targetIdx].name << " they are dead you can use a coepse to fight!\n";
                     continue;
                 }
                 activeIdx = targetIdx; // Update the index of the active player Pokemon
@@ -1231,40 +1252,6 @@ bool IsEnemyAlive(const vector<Pokemon>& enemyTeam) {
     return false;
 };
 
-// The UseMove function is now redundant as ExecuteTurn handles the actual move execution.
-// If you meant for it to be a general wrapper, its logic is now contained within ExecuteTurn.
-/*
-void UseMove(Pokemon& attacker,
-        Pokemon& defender,
-        int moveIndex)
-{
-    if (moveIndex < 0 ||
-        moveIndex >= attacker.moves.size())
-    {
-        cout << "Invalid move!\n";
-        return;
-    }
-
-    Move& move = attacker.moves[moveIndex]; // Corrected Move capitalization
-
-    cout << attacker.name
-        << " used "
-        << move.name
-        << "!\n";
-
-    // This simplified damage calculation is handled by ExecuteTurn now.
-    // int damage = (attacker.attack + move.power) - defender.defense / 2;
-    // ...
-    // defender.hp -= damage;
-    // ...
-    // cout << defender.name << " took " << damage << " damage!\n";
-    // cout << defender.name << " HP: " << defender.hp << "/" << defender.maxHp << endl;
-
-    // Delegate to the more robust ExecuteTurn
-    ExecuteTurn(attacker, defender, move);
-};
-*/
-
 int main()
 {
     // Initialize random number generator once at the start of main
@@ -1344,41 +1331,41 @@ int main()
     if (!battle(rival2Team)) { return 1; }
     HealTeam();
     generatepokemon(3); // Wild Pokemon after Rival 2
-    riddle4();
+    riddle3();
 
     // Lt. Surge Battle
     cout << "\n--- Gym Leader Lt. Surge Battle! ---\n";
     if (!battle(ltSurgeTeam)) { return 1; }
     HealTeam();
     generatepokemon(4); // Wild Pokemon after Lt. Surge
-    riddle5();
+    riddle4();
 
     // Erika Battle
     cout << "\n--- Gym Leader Erika Battle! ---\n";
     if (!battle(erikaTeam)) { return 1; }
     HealTeam();
     generatepokemon(5); // Wild Pokemon after Erika
-    riddle6();
+    riddle5();
 
     // Koga Battle
     cout << "\n--- Gym Leader Koga Battle! ---\n";
     if (!battle(kogaTeam)) { return 1; }
     HealTeam();
     generatepokemon(6); // Wild Pokemon after Koga
-    riddle7();
 
     // Rival Battle 3
     cout << "\n--- Rival Battle 3! ---\n";
     if (!battle(rival3Team)) { return 1; }
     HealTeam();
     generatepokemon(7); // Wild Pokemon after Rival 3
-    riddle8();
+    riddle6();
 
     // Sabrina Battle
     cout << "\n--- Gym Leader Sabrina Battle! ---\n";
     if (!battle(sabrinaTeam)) { return 1; }
     HealTeam();
     generatepokemon(8); // Wild Pokemon after Sabrina
+    riddle7();
 
     // Blaine Battle
     cout << "\n--- Gym Leader Blaine Battle! ---\n";
@@ -1391,6 +1378,7 @@ int main()
     if (!battle(rival4Team)) { return 1; }
     HealTeam();
     generatepokemon(10); // Wild Pokemon after Rival 4
+    riddle8();
 
     // Giovanni Battle
     cout << "\n--- Gym Leader Giovanni Battle! ---\n";
@@ -1424,5 +1412,6 @@ int main()
 
     cout << "\nCongratulations on beating the game! Thanks for playing :D\n";
     cout << "You beat " << gyms_beaten << " riddles!\n"; // Display total riddles beaten
+    cout << "I would like to thank me, myself, and I for carrying this project from day 1 to now at 11:22 PM on may 12 2026 im the goat alex suck get good L + ratio + 67"
     return 0; // Explicitly return 0 for successful execution
 }
